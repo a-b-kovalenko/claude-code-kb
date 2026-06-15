@@ -2,7 +2,7 @@
 
 ## 📝 TL;DR
 
-Claude Code запускається в CI через headless-режим (`--print`) — детально про нього в [Headless Mode](Headless_Mode.md). Для CI специфічно: автентифікація через `ANTHROPIC_API_KEY` (підписка не підходить), обмеження `--allowedTools` проти prompt injection, і `concurrency` у GitHub Actions проти rate limits.
+Claude Code запускається в CI через headless-режим (`--print`) — детально про нього в [Headless-режим](Headless_Mode.md). Для CI специфічно: автентифікація через `ANTHROPIC_API_KEY` (підписка не підходить), обмеження `--allowedTools` проти prompt injection, і `concurrency` у GitHub Actions проти rate limits.
 
 ## 🔐 Автентифікація в CI
 
@@ -16,6 +16,22 @@ env:
 Додати `ANTHROPIC_API_KEY` до **Settings → Secrets and variables → Actions** у репозиторії (GitHub) або до credentials у Jenkins.
 
 Див. [Вибір моделі та оптимізація вартості](Model_Selection_and_Cost.md) — там порівняння вартості моделей.
+
+## 🔌 Провайдери та API
+
+Claude Code використовує **Anthropic API format** — endpoint `/v1/messages` із власною структурою запиту. Це **не** OpenAI-сумісний API (`/v1/chat/completions`), тому вказати довільний OpenAI-сумісний провайдер не вийде.
+
+Підтримувані бекенди для `claude --print`:
+
+| Бекенд | Аутентифікація |
+| :--- | :--- |
+| Anthropic API (за замовчуванням) | `ANTHROPIC_API_KEY` |
+| Amazon Bedrock | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` |
+| Google Vertex AI | `GOOGLE_APPLICATION_CREDENTIALS` або ADC |
+
+Змінна `ANTHROPIC_BASE_URL` дозволяє перенаправити виклики на кастомний endpoint, але він також має відповідати **Anthropic API format**, а не OpenAI.
+
+Для OpenAI-сумісних провайдерів (GitHub Models, Ollama, Groq тощо) — використовуй `curl` або OpenAI SDK напряму, як показано в прикладах нижче.
 
 ## 🐙 GitHub Actions: приклади
 
@@ -103,6 +119,32 @@ $(cat src/main/java/com/example/MyService.java)
 EOF
 ```
 
+Наведений патерн — передати промпт через CLI і отримати текстовий вивід — не прив'язаний до Claude Code. `claude --print` можна замінити будь-яким іншим CLI (наприклад, `ollama run llama3`), зберігши ту саму структуру пайплайну. Відмінність: немає `--output-format json` з полем `cost_usd`, немає захисту `--max-turns` і немає tool use (`Read`, `Grep`).
+
+### GitHub Models: вбудовані моделі
+
+[GitHub Models](https://github.com/marketplace/models) — маркетплейс моделей (GPT-4o, Llama, Mistral тощо) з OpenAI-сумісним API. Ключова перевага для CI: аутентифікація через `${{ secrets.GITHUB_TOKEN }}`, який вже є в кожному Actions workflow — жодного додаткового секрету не потрібно.
+
+```yaml
+- name: Review with GitHub Models
+  env:
+    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  run: |
+    git diff origin/${{ github.base_ref }}...HEAD > /tmp/diff.txt
+    curl -s https://models.inference.ai.azure.com/chat/completions \
+      -H "Authorization: Bearer $GH_TOKEN" \
+      -H "Content-Type: application/json" \
+      -d "{
+        \"model\": \"gpt-4o-mini\",
+        \"messages\": [{
+          \"role\": \"user\",
+          \"content\": \"Review this diff for bugs and security issues:\n$(cat /tmp/diff.txt)\"
+        }]
+      }" | jq -r '.choices[0].message.content'
+```
+
+GitHub Models має безкоштовний tier для публічних репозиторіїв і обмеження rate limit для приватних. Для вибору моделі: легкі задачі (quick review) → `gpt-4o-mini`; складніший аналіз → `gpt-4o` або `Meta-Llama-3.1-70B-Instruct`.
+
 ## ⚠️ Безпека та ризики
 
 **Prompt injection** — головний ризик у CI. Якщо агент читає PR-опис, коміт-повідомлення або будь-який файл від зовнішніх контрибюторів, зловмисник може вставити туди інструкцію для агента.
@@ -119,9 +161,19 @@ concurrency:
   cancel-in-progress: true
 ```
 
+**Secrets leakage** — якщо агент читає `.env`, `*.pem` або логи з паролями і виводить їх у `result` (який потрапляє в коментар PR), секрети стають публічними. Захист: `deny`-правила в `settings.json` разом з `--allowedTools`:
+
+```json
+{
+  "permissions": {
+    "deny": ["Read(**/.env)", "Read(**/*.pem)", "Read(**/credentials.xml)"]
+  }
+}
+```
+
 **Rate limits** — кілька одночасних PR можуть вичерпати квоту. GitHub `concurrency` або `max-parallel` допоможуть.
 
-Див. [Permissions Optimization](Permissions_Optimization.md) та [Guardian Hooks](Guardian_Hooks.md).
+Див. [Оптимізація дозволів](Permissions_Optimization.md) та [Захисні хуки (Guardian)](Guardian_Hooks.md).
 
 ## 💰 Управління вартістю
 
@@ -137,13 +189,66 @@ echo "Review cost: $cost USD"
 
 - Для великих репозиторіїв: передавати лише diff, а не весь `src/`
 
-Детально — [Model Selection and Cost](Model_Selection_and_Cost.md).
+Детально — [Вибір моделі та оптимізація вартості](Model_Selection_and_Cost.md).
+
+## 🏭 Production Hardening
+
+### Фіксування версії
+
+`npm install -g @anthropic-ai/claude-code` завжди ставить останню версію — антипатерн у CI. Нова версія може змінити формат виводу або поведінку і непомітно зламати пайплайн. Фіксуй версію та оновлюй свідомо після тестування:
+
+```bash
+npm install -g @anthropic-ai/claude-code@1.0.3
+```
+
+### Exit codes
+
+| Код | Значення |
+| :--- | :--- |
+| `0` | Успіх |
+| `1` | Загальна помилка агента (rate limit, API недоступний тощо) |
+| `2` | Невалідний ввід (неправильні прапори або промпт) |
+
+Перевіряй exit code явно для стійких bash-скриптів:
+
+```bash
+if ! claude --print "..." --output-format json > /tmp/result.json; then
+  echo "Claude failed with exit $?"
+  exit 1
+fi
+```
+
+### Корпоративний проксі
+
+Claude Code (Node.js) підтримує стандартні змінні оточення для проксі — актуально для self-hosted runners за корпоративним firewall:
+
+```yaml
+env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  HTTPS_PROXY: ${{ secrets.CORPORATE_PROXY_URL }}
+```
+
+### Великі дифи: chunking-стратегія
+
+У Java-монолітах `git diff` може бути на тисячі рядків — агент вичерпає ліміт контексту або "загубиться". Стратегія: спочатку отримати список файлів, потім аналізувати по черзі:
+
+```bash
+git diff --name-only origin/$BASE_REF...HEAD | while read -r file; do
+  echo "=== $file ===" >> /tmp/review.md
+  git diff origin/$BASE_REF...HEAD -- "$file" | \
+    claude --print "Review this diff for bugs and security issues:" \
+      --output-format json --max-turns 2 \
+    | jq -r '.result' >> /tmp/review.md
+done
+```
+
+Це також дозволяє пропустити файли поза scope (наприклад, `.xml`, міграції) або зупинитись при першому критичному знахідку.
 
 ## 🔗 Зв'язок з іншими нотатками
 
-- [Headless Mode](Headless_Mode.md) — що таке headless-режим, прапори, одна задача — один процес
-- [Git PR Workflow](Git_PR_Workflow.md) — PR-конвенції та commit-стандарти, які перевіряє review
-- [Guardian Hooks](Guardian_Hooks.md) — захисні хуки для локального середовища
-- [Permissions Optimization](Permissions_Optimization.md) — `--allowedTools`, glob-синтаксис дозволів
-- [Model Selection and Cost](Model_Selection_and_Cost.md) — вибір моделі та бюджетні стратегії
-- [Claude Code Dynamic Workflows](Claude_Code_Dynamic_Workflows.md) — складніший рівень: генерація JS-скрипта і запуск сотень субагентів поза сесією
+- [Headless-режим](Headless_Mode.md) — що таке headless-режим, прапори, одна задача — один процес
+- [Git та PR Workflow](Git_PR_Workflow.md) — PR-конвенції та commit-стандарти, які перевіряє review
+- [Захисні хуки (Guardian)](Guardian_Hooks.md) — захисні хуки для локального середовища
+- [Оптимізація дозволів](Permissions_Optimization.md) — `--allowedTools`, glob-синтаксис дозволів
+- [Вибір моделі та оптимізація вартості](Model_Selection_and_Cost.md) — вибір моделі та бюджетні стратегії
+- [Динамічні воркфлоу Claude Code](Claude_Code_Dynamic_Workflows.md) — складніший рівень: генерація JS-скрипта і запуск сотень субагентів поза сесією

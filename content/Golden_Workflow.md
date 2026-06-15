@@ -53,6 +53,12 @@ Task PROJ-412
 | Verify    | субагент `test-runner`    | Увесь модуль зелений                            |
 | Commit    | субагент `reviewer` + git | Вердикт APPROVE, чистий коміт на крок           |
 
+## Фаза 0 — Підготовка
+
+**Умова входу:** до відкриття сесії Claude Code.
+
+Агент, що стартує на нестабільній базі, не може відрізнити свої регресії від вже існуючих проблем. Перед початком переконайтесь що `main` чистий і поточні тести зелені. Деталі: [Чеклист перед задачею](Pre_Task_Checklist.md).
+
 ## Фаза 1 — Explore
 
 **Умова входу:** у вас є тікет, ви відкрили нову сесію Claude Code.
@@ -86,6 +92,8 @@ Risks:
 ```
 
 Цей звіт стає основою для Фази 2.
+
+Для великих проєктів запускайте кілька Explorer-субагентів паралельно: один досліджує сервісний шар, інший — persistence або інфраструктуру. Детальніше: [Паралельні субагенти](Parallel_Subagents.md).
 
 Детальніше: [Архітектура субагентів](Subagents_Architecture.md), [Приклад субагента: Explorer](Explorer_Subagent_Example.md)
 
@@ -190,6 +198,8 @@ Suggested fix: add constructor injection in PaymentFailedConsumer (line ~78)
 ```
 
 Основний агент читає тільки "Root cause" і "Suggested fix" — виправляє конкретне місце без 200 рядків стектрейсу.
+
+**Якщо test-runner не може локалізувати root cause** — спустіться на рівень нижче: запустіть тест вручну з детальнішим виводом (`--info` або `--debug`) або додайте `logging.level.com.example=DEBUG` у `application-test.properties`. Після цього делегуйте `test-runner` знову з явним уточненням: *"Root cause is unknown — analyze the full log output."*
 
 Детальніше: [Верифікаційний цикл](Agentic_Verification_Loop.md), [Приклад субагента: Test-runner](Test_Runner_Subagent_Example.md)
 
