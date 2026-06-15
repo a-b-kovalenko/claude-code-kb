@@ -8,5 +8,9 @@
 .claude/settings.local.json
 .claude/plans/
 
+# Internal planning/session files
+PUBLISH_PLAN.md
+TODO.md
+
 # OS
 .DS_Store
