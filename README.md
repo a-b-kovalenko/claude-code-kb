@@ -15,7 +15,7 @@
 
 ## Як використовувати
 
-**В Obsidian:** клонуйте репозиторій і відкрийте папку як vault.
+**В Obsidian:** клонуйте репозиторій і відкрийте папку як vault. Конфігурація `.obsidian/` включена в репо (крім `workspace.json`) — налаштування, плагіни та тема підхоплюються автоматично.
 
 **На GitHub:** починайте з [Map of Content](Claude_Code_Knowledge_Base.md) — центрального вузла з посиланнями на всі нотатки.
 
@@ -34,6 +34,7 @@ npm install -g markdownlint-cli
 ├── content/                        # Всі нотатки (40+ файлів .md)
 │   └── scripts/                    # Bash-скрипти (bash-guard, flyway-guard)
 ├── CLAUDE.md                       # Інструкції для Claude Code агента
+├── .obsidian/                      # Конфіг Obsidian (без workspace.json)
 └── .claude/
     ├── settings.json               # Конфігурація дозволів та хуків
     └── hooks/md-lint.sh            # Авто-перевірка markdown при кожному записі
