@@ -1,7 +1,3 @@
----
-tags: [type/concept, topic/agentry]
----
-
 [⬅️](../Claude_Code_Knowledge_Base.md)
 
 ## 📝 TL;DR
