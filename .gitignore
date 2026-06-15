@@ -9,8 +9,7 @@
 .claude/plans/
 
 # Internal planning/session files
-PUBLISH_PLAN.md
-TODO.md
+.plans/
 
 # OS
 .DS_Store
