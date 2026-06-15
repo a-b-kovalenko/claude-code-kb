@@ -1,8 +1,8 @@
 # IDE
 .idea/
 
-# Obsidian personal settings
-.obsidian/
+# Obsidian personal settings (workspace state only)
+.obsidian/workspace.json
 
 # Claude Code local/session files
 .claude/settings.local.json
