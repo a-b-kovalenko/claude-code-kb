@@ -1,0 +1,12 @@
+# IDE
+.idea/
+
+# Obsidian personal settings
+.obsidian/
+
+# Claude Code local/session files
+.claude/settings.local.json
+.claude/plans/
+
+# OS
+.DS_Store

@@ -1,0 +1,41 @@
+{
+  "//": "Покласти у .claude/settings.json (командний, комітиться) проєкту.",
+  "//modules": "Заміни :app у командах тестів на потрібний модуль або налаштуй під свою структуру.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "//": "Hook 1 — авто-формат. Spotless після кожної правки файлу. Агент не може лишити неформатований код.",
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && ./gradlew spotlessApply -q || true",
+            "timeout": 90
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "//": "Hook 2 — security-gate на Bash. Блокує деструктивні команди (exit 2).",
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/bash-guard.sh\""
+          }
+        ]
+      },
+      {
+        "//": "Hook 3 — захист Flyway-міграцій. Блокує зміну вже наявних migration-файлів.",
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/flyway-guard.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}
