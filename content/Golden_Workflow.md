@@ -278,9 +278,9 @@ Senior-розробник не сліпо слідує рецептам. Ось 
 ## Зв'язок з іншими нотатками
 
 - Ролі субагентів (Explorer / Test-runner / Reviewer): [Архітектура субагентів](Subagents_Architecture.md)
-- Готовий файл субагента Explorer: [Приклад субагента: Explorer](Explorer_Subagent_Example.md)
-- Готовий файл субагента Test-runner: [Приклад субагента: Test-runner](Test_Runner_Subagent_Example.md)
-- Готовий файл субагента Reviewer: [Приклад субагента: Reviewer](Reviewer_Subagent_Example.md)
+- Готовий файл субагента [Explorer](Explorer_Subagent_Example.md)
+- Готовий файл субагента [Test-runner](Test_Runner_Subagent_Example.md)
+- Готовий файл субагента [Reviewer](Reviewer_Subagent_Example.md)
 - Plan Mode та Tasks API в деталях: [Планування та Tasks API](Planning_and_Tasks.md)
 - Верифікаційний цикл та Testcontainers: [Верифікаційний цикл](Agentic_Verification_Loop.md)
 - Управління контекстним вікном та `/compact`: [Контекстне вікно та /compact](Context_Window_Management.md)

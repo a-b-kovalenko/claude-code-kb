@@ -68,7 +68,7 @@ Claude Code має три вбудованих агенти, які спраць
 ## Зв'язок з іншими нотатками
 
 - Вбудовані агенти та їх особливості: [🤖 Вбудовані агенти](Builtin_Agents.md).
-- Готовий файл агента Explorer: [🔍 Приклад субагента: Explorer](Explorer_Subagent_Example.md).
-- Готовий файл агента Test-runner: [🧪 Приклад субагента: Test-runner](Test_Runner_Subagent_Example.md).
-- Готовий файл агента Reviewer: [⚖️ Приклад субагента: Reviewer](Reviewer_Subagent_Example.md).
+- Готовий файл агента [Explorer](Explorer_Subagent_Example.md).
+- Готовий файл агента [Test-runner](Test_Runner_Subagent_Example.md).
+- Готовий файл агента [Reviewer](Reviewer_Subagent_Example.md).
 - Всі три субагенти у практичному наскрізному прикладі: [🏆 Золотий workflow](Golden_Workflow.md).
