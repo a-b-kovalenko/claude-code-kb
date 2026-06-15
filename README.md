@@ -31,7 +31,7 @@ npm install -g markdownlint-cli
 
 ```text
 ├── Claude_Code_Knowledge_Base.md   # MOC — центральний реєстр нотаток
-├── content/                        # Всі нотатки (38+ файлів .md)
+├── content/                        # Всі нотатки (40+ файлів .md)
 │   └── scripts/                    # Bash-скрипти (bash-guard, flyway-guard)
 ├── CLAUDE.md                       # Інструкції для Claude Code агента
 └── .claude/
