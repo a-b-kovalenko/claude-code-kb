@@ -1,17 +1,17 @@
 # Claude Code Knowledge Base
 
-База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 38+ нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
+База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 40+ нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
 
 ## Що всередині
 
 | Розділ | Зміст |
 | :----- | :----- |
-| 🤖 Методологія Agentry | Основи, IDE-інтеграції, Extended Thinking, планування, архітектура субагентів |
+| 🤖 Методологія Agentry | Основи, IDE-інтеграції, Extended Thinking, планування, архітектура субагентів, headless-режим |
 | 💡 Кращі практики | Золотий workflow, антипатерни, ефективні промпти, чеклист перед задачею |
 | 🔬 Субагенти та оркестрація | Готові приклади Explorer / Test-runner / Reviewer, паралельність, worktree |
 | 🧠 Контекст та пам'ять | CLAUDE.md, auto-memory, управління контекстним вікном, вибір моделі |
 | 🧪 Інженерна якість | Spring Boot тестування, Git/PR workflow, верифікаційний цикл |
-| 🛡️ Інфраструктура та безпека | Хуки, дозволи, settings.json, MD lint |
+| 🛡️ Інфраструктура та безпека | Хуки, дозволи, settings.json, CI/CD інтеграція, MD lint |
 
 ## Як використовувати
 
@@ -34,7 +34,6 @@ npm install -g markdownlint-cli
 ├── content/                        # Всі нотатки (38+ файлів .md)
 │   └── scripts/                    # Bash-скрипти (bash-guard, flyway-guard)
 ├── CLAUDE.md                       # Інструкції для Claude Code агента
-├── GEMINI.md                       # Правила ведення бази знань
 └── .claude/
     ├── settings.json               # Конфігурація дозволів та хуків
     └── hooks/md-lint.sh            # Авто-перевірка markdown при кожному записі

@@ -25,6 +25,7 @@
 > - [📅 Планування та Tasks API](content/Planning_and_Tasks.md) — Як не дати агенту "заблукати" у складних задачах.
 > - [👥 Архітектура субагентів](content/Subagents_Architecture.md) — Розподіл ролей: Explorer, Runner, Reviewer.
 > - [🤖 Вбудовані агенти](content/Builtin_Agents.md) — Explore, Plan, general-purpose: коли спрацьовують автоматично та чим відрізняються.
+> - [🖥️ Headless Mode](content/Headless_Mode.md) — Запуск без REPL: `--print`, ключові прапори, одна задача — один процес, захист від нескінченних циклів.
 
 > [!tip] 💡 Кращі практики
 > *Як працювати з агентом ефективно: workflow, помилки, промпти.*
@@ -77,6 +78,8 @@
 > - [🔧 Розробка власного хука](content/Hook_Development_Guide.md) — Анатомія хука, stdin JSON, exit-коди, зворотний зв'язок та практичні приклади.
 > - [📋 MD Lint Hook](content/MD_Lint_Hook.md) — PostToolUse-хук для автоматичної перевірки markdown: конфіг, скрипт та відома поведінка.
 > - [🛑 Stop Hook](content/Stop_Hook.md) — Хук на завершення відповіді: сповіщення, нагадування, примусове продовження через exit 2.
+> - [🖥️ Headless Mode](content/Headless_Mode.md) — Запуск без REPL: `--print`, ключові прапори, одна задача — один процес, захист від нескінченних циклів.
+> - [⚙️ CI/CD інтеграція](content/CI_CD_Integration.md) — GitHub Actions, автентифікація через API key, prompt injection, управління вартістю.
 
 ---
 [📝 GEMINI.md](GEMINI.md) — Правила ведення цієї бази знань.
