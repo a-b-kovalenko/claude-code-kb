@@ -126,6 +126,7 @@ docker info
 
 ## Зв'язок з іншими нотатками
 
+- Перед першою задачею у новому проєкті: [Чеклист старту проєкту](Project_Startup_Checklist.md)
 - Повний workflow де цей чеклист є Фазою 0: [Золотий workflow](Golden_Workflow.md)
 - Що буває якщо пропустити пункти: [Антипатерни](Anti_Patterns.md)
 - Формулювання критерію Done у промпті: [Ефективні промпти](Effective_Prompting.md)
