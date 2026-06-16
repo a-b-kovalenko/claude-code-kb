@@ -105,3 +105,4 @@ git tag --sort=-creatordate | head -10  # cadence релізів, semantic versi
 - [☑️ Чеклист старту проєкту](Project_Startup_Checklist.md) — секція "Retrofit" посилається сюди
 - [🚀 Bootstrap-команда /init-project](Project_Bootstrap_Command.md) — retrofit-сценарій команди
 - [📐 Методологія ADR](ADR_Guide.md) — формат ретроспективних ADR
+- [📄 Написання CLAUDE.md](CLAUDE_md_Writing_Guide.md) — як наповнити CLAUDE.md результатами аудиту
