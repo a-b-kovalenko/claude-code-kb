@@ -1,6 +1,6 @@
 # Claude Code Knowledge Base
 
-База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 40+ нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
+База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 44 нотатки: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
 
 ## Що всередині
 
@@ -12,6 +12,7 @@
 | 🧠 Контекст та пам'ять | CLAUDE.md, auto-memory, управління контекстним вікном, вибір моделі |
 | 🧪 Інженерна якість | Spring Boot тестування, Git/PR workflow, верифікаційний цикл |
 | 🛡️ Інфраструктура та безпека | Хуки, дозволи, settings.json, CI/CD інтеграція, MD lint |
+| 🏁 Старт проєкту | Чеклист старту, методологія ADR, bootstrap-команда `/init-project`, аудит існуючого проєкту |
 
 ## Як використовувати
 
@@ -21,7 +22,7 @@
 
 ## Залежності
 
-Хук `.claude/hooks/md-lint.sh` автоматично перевіряє markdown при кожному записі файлу через Claude Code. Для його роботи потрібен `markdownlint-cli`:
+Хук `.claude/hooks/md-lint.sh` автоматично перевіряє markdown при кожному записі файлу у межах проєкту через Claude Code. Для його роботи потрібен `markdownlint-cli`:
 
 ```bash
 npm install -g markdownlint-cli
@@ -31,7 +32,7 @@ npm install -g markdownlint-cli
 
 ```text
 ├── Claude_Code_Knowledge_Base.md   # MOC — центральний реєстр нотаток
-├── content/                        # Всі нотатки (40+ файлів .md)
+├── content/                        # Всі нотатки (44 файли .md)
 │   └── scripts/                    # Bash-скрипти (bash-guard, flyway-guard)
 ├── CLAUDE.md                       # Інструкції для Claude Code агента
 ├── .obsidian/                      # Конфіг Obsidian (без workspace.json)
