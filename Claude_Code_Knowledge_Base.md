@@ -16,12 +16,6 @@
 
 ## 🏗️ Структура бази знань
 
-### 🏁 Старт проєкту
-
-- [☑️ Чеклист старту проєкту](content/Project_Startup_Checklist.md) — Git, CLAUDE.md, Claude Code config, ADR, Antora: що налаштувати перед першим коммітом.
-- [📐 ADR — Architecture Decision Records](content/ADR_Guide.md) — Шаблон, статуси, нумерація та інтеграція з Antora.
-- [🚀 Bootstrap-команда /init-project](content/Project_Bootstrap_Command.md) — Slash-команда з плейсхолдерами: запускаєш у новій папці — отримуєш готовий проєкт.
-
 ### 🤖 Методологія Agentry
 
 *Основи взаємодії з AI-агентами та управління процесами.*
@@ -92,6 +86,12 @@
 - [🛑 Stop Hook](content/Stop_Hook.md) — Хук на завершення відповіді: сповіщення, нагадування, примусове продовження через exit 2.
 - [🖥️ Headless Mode](content/Headless_Mode.md) — Запуск без REPL: `--print`, ключові прапори, одна задача — один процес, захист від нескінченних циклів.
 - [⚙️ CI/CD інтеграція](content/CI_CD_Integration.md) — GitHub Actions, автентифікація через API key, prompt injection, управління вартістю.
+
+### 🏁 Старт проєкту
+
+- [☑️ Чеклист старту проєкту](content/Project_Startup_Checklist.md) — Git, CLAUDE.md, Claude Code config, ADR, Antora: що налаштувати перед першим коммітом.
+- [📐 ADR — Architecture Decision Records](content/ADR_Guide.md) — Шаблон, статуси, нумерація та інтеграція з Antora.
+- [🚀 Bootstrap-команда /init-project](content/Project_Bootstrap_Command.md) — Slash-команда з плейсхолдерами: запускаєш у новій папці — отримуєш готовий проєкт.
 
 ---
 
