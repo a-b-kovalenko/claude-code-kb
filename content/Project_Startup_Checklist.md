@@ -38,7 +38,7 @@
 - Template Repository: якщо старти повторюються — тримати GitHub-шаблон з базовим `.gitignore`, `CLAUDE.md`, `.claude/settings.json` та структурою `docs/adr/`
 - Хуки за потреби: md-lint, flyway-guard
 
-Детальніше: [Ієрархія артефактів](Project_Artifacts_Hierarchy.md), [MCP-сервери](MCP_Server_Development.md), [Guardian хуки](Guardian_Hooks.md)
+Детальніше: [Ієрархія артефактів](Project_Artifacts_Hierarchy.md), [MCP-сервери](MCP_Server_Development.md), [Захисні хуки](Guardian_Hooks.md)
 
 ### ☐ 4. Архітектурна документація
 
@@ -46,7 +46,7 @@
 - Написати ADR-0001 (вибір tech stack або рішення прийняти цей підхід)
 - Якщо потрібна документація-сайт (Antora): `antora.yml` у корені, `docs/modules/ROOT/pages/`; ADR кладуться в `docs/modules/ROOT/pages/adr/`
 
-Детальніше: [ADR Guide](ADR_Guide.md)
+Детальніше: [Методологія ADR](ADR_Guide.md)
 
 ### ☐ 5. Quality gates
 
@@ -87,7 +87,7 @@ git commit -m "chore: add Claude Code project setup"
 ## Зв'язок з іншими нотатками
 
 - [☑️ Чеклист перед задачею](Pre_Task_Checklist.md) — для кожної окремої задачі в рамках проєкту
-- [📐 ADR Guide](ADR_Guide.md) — методологія ведення рішень
+- [📐 Методологія ADR](ADR_Guide.md) — методологія ведення рішень
 - [🚀 Bootstrap-команда /init-project](Project_Bootstrap_Command.md) — автоматизований варіант цього чеклисту
 - [📄 Написання CLAUDE.md](CLAUDE_md_Writing_Guide.md)
 - [🗂️ Ієрархія артефактів](Project_Artifacts_Hierarchy.md)
