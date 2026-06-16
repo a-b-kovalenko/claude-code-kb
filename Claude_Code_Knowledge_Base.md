@@ -16,6 +16,12 @@
 
 ## 🏗️ Структура бази знань
 
+### 🏁 Старт проєкту
+
+- [☑️ Чеклист старту проєкту](content/Project_Startup_Checklist.md) — Git, CLAUDE.md, Claude Code config, ADR, Antora: що налаштувати перед першим коммітом.
+- [📐 ADR — Architecture Decision Records](content/ADR_Guide.md) — Шаблон, статуси, нумерація та інтеграція з Antora.
+- [🚀 Bootstrap-команда /init-project](content/Project_Bootstrap_Command.md) — Slash-команда з плейсхолдерами: запускаєш у новій папці — отримуєш готовий проєкт.
+
 ### 🤖 Методологія Agentry
 
 *Основи взаємодії з AI-агентами та управління процесами.*
