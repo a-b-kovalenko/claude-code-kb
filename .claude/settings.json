@@ -1,5 +1,10 @@
 {
   "plansDirectory": ".plans",
+  "permissions": {
+    "allow": [
+      "Bash(markdownlint *)"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {

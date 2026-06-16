@@ -86,6 +86,7 @@
 - [🛑 Stop Hook](content/Stop_Hook.md) — Хук на завершення відповіді: сповіщення, нагадування, примусове продовження через exit 2.
 - [🖥️ Headless Mode](content/Headless_Mode.md) — Запуск без REPL: `--print`, ключові прапори, одна задача — один процес, захист від нескінченних циклів.
 - [⚙️ CI/CD інтеграція](content/CI_CD_Integration.md) — GitHub Actions, автентифікація через API key, prompt injection, управління вартістю.
+- [📱 Remote Control](content/Remote_Control.md) — Продовження локальної сесії з телефону або браузера: QR-код, push-нотифікації, вимоги до плану.
 
 ### 🏁 Старт проєкту
 
