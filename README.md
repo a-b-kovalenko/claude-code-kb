@@ -1,6 +1,6 @@
 # Claude Code Knowledge Base
 
-База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 45 нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
+База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 46 нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
 
 ## Що всередині
 
@@ -11,7 +11,7 @@
 | 🔬 Субагенти та оркестрація | Готові приклади Explorer / Test-runner / Reviewer, паралельність, worktree |
 | 🧠 Контекст та пам'ять | CLAUDE.md, auto-memory, управління контекстним вікном, вибір моделі |
 | 🧪 Інженерна якість | Spring Boot тестування, Git/PR workflow, верифікаційний цикл |
-| 🛡️ Інфраструктура та безпека | Хуки, дозволи, settings.json, CI/CD інтеграція, MD lint, Remote Control |
+| 🛡️ Інфраструктура та безпека | Хуки, дозволи, settings.json, CI/CD інтеграція, Remote Control, Desktop App |
 | 🏁 Старт проєкту | Чеклист старту, методологія ADR, bootstrap-команда `/init-project`, аудит існуючого проєкту |
 
 ## Як використовувати

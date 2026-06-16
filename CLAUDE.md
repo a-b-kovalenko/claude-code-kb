@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Obsidian vault — база знань про Claude Code для Senior Java-розробника. 45 нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
+Obsidian vault — база знань про Claude Code для Senior Java-розробника. 46 нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
 
 ## Структура
 
