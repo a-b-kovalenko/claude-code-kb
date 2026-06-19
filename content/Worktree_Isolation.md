@@ -114,3 +114,4 @@ git branch --merged main | grep 'worktree/' | xargs git branch -d
 - Архітектура субагентів та Agent-виклик: [👥 Архітектура субагентів](Subagents_Architecture.md).
 - Паралельний запуск кількох агентів: [⚡ Паралельні субагенти](Parallel_Subagents.md).
 - Git workflow після злиття: [🌿 Git та PR Workflow](Git_PR_Workflow.md).
+- Worktrees як будівельний блок автономних циклів: [🔁 Loop Engineering](Loop_Engineering.md).

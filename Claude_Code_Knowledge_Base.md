@@ -50,6 +50,7 @@
 - [🌿 Worktree Isolation](content/Worktree_Isolation.md) — Ізольований запуск субагента у відгалуженій копії репо: lifecycle, злиття результату, коли варто.
 - [🔀 Динамічна оркестрація субагентів](content/Dynamic_Orchestration.md) — Оркестратор вирішує наступний крок за результатом: розгалуження, retry loop, адаптивний паралелізм.
 - [⚙️ Claude Code Dynamic Workflows](content/Claude_Code_Dynamic_Workflows.md) — Офіційна фіча (research preview): Claude генерує JS-скрипт і запускає сотні субагентів поза сесією.
+- [🔁 Loop Engineering](content/Loop_Engineering.md) — 14-крокова рамка переходу від ручного промптингу до автономних циклів: 4-умовний тест, 5 блоків, failure modes.
 
 ### 🧠 Контекст та Пам'ять
 

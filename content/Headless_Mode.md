@@ -103,3 +103,4 @@ Exit-коди: `0` = успіх, `1` = помилка агента, `2` = нев
 - [Model Selection and Cost](Model_Selection_and_Cost.md) — вибір моделі та бюджетні стратегії
 - [Permissions Optimization](Permissions_Optimization.md) — `--allowedTools`, glob-синтаксис
 - [Parallel Subagents](Parallel_Subagents.md) — паралельний запуск субагентів через Tasks API
+- [Loop Engineering](Loop_Engineering.md) — стратегічна рамка: коли headless перетворюється на повноцінний автономний цикл

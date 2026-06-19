@@ -108,3 +108,4 @@ On test failure:
 - Паралельний запуск субагентів: [⚡ Паралельні субагенти](Parallel_Subagents.md).
 - Верифікаційний цикл (статичний приклад): [🔄 Верифікаційний цикл](Agentic_Verification_Loop.md).
 - Планування складних задач: [📅 Планування та Tasks API](Planning_and_Tasks.md).
+- Стратегічна рамка для автономних циклів (коли будувати, 5 блоків, failure modes): [🔁 Loop Engineering](Loop_Engineering.md).

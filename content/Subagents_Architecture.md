@@ -72,3 +72,4 @@ Claude Code має три вбудованих агенти, які спраць
 - Готовий файл агента [Test-runner](Test_Runner_Subagent_Example.md).
 - Готовий файл агента [Reviewer](Reviewer_Subagent_Example.md).
 - Всі три субагенти у практичному наскрізному прикладі: [🏆 Золотий workflow](Golden_Workflow.md).
+- Субагенти як будівельний блок автономних циклів: [🔁 Loop Engineering](Loop_Engineering.md).
