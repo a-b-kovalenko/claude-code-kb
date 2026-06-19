@@ -52,62 +52,30 @@ description: >
 
 Тіло файлу — звичайний Markdown з правилами та прикладами коду:
 
----
-
+```markdown
 ### N+1 SELECT — головна пастка
 
-N+1 виникає коли колекція ліниво підвантажується всередині циклу.
-
-**Антипатерн:**
-
-```java
-// Для кожного Order — окремий SELECT для items
-orders.forEach(o -> process(o.getItems()));
-```
-
-**Рішення — JOIN FETCH у репозиторії:**
-
-```java
-@Query("SELECT o FROM Order o JOIN FETCH o.items WHERE o.status = :status")
-List<Order> findWithItemsByStatus(@Param("status") OrderStatus status);
-```
-
-**Діагностика:** увімкніть `spring.jpa.show-sql=true` і рахуйте SELECT-и. Якщо N записів = N+1 запитів — є N+1 проблема.
-
----
-
-### Пагінація — ніколи не використовуй LIMIT у JOIN FETCH
-
-Hibernate повертає всі записи в пам'ять при поєднанні JOIN FETCH та Pageable. Рішення — два запити:
-
-```java
-// 1. Отримати ID зі сторінкою
-@Query(value = "SELECT o.id FROM Order o WHERE o.status = :status",
-       countQuery = "SELECT COUNT(o) FROM Order o WHERE o.status = :status")
-Page<Long> findIdsByStatus(@Param("status") OrderStatus status, Pageable pageable);
-
-// 2. Завантажити з JOIN FETCH по ID
-@Query("SELECT o FROM Order o JOIN FETCH o.items WHERE o.id IN :ids")
-List<Order> findWithItemsByIds(@Param("ids") List<Long> ids);
-```
-
----
+Антипатерн: `orders.forEach(o -> process(o.getItems()))` — окремий SELECT на кожен Order.
+Рішення: `JOIN FETCH` у репозиторії або EntityGraph.
 
 ### Межі транзакцій
 
-- `@Transactional` — тільки в application layer (сервіси).
-- Репозиторії мають вбудовані транзакції на рівні методів — не додавайте зайвих.
-- Ніколи не відкривайте транзакцію в контролері — це антипатерн Open Session in View.
+- `@Transactional` — тільки в сервісах, не в контролерах.
+- Всі колекції — LAZY; підвантажувати явно через JOIN FETCH.
+```
 
----
+## Псевдокод як мова інструкцій
 
-### FetchType за замовчуванням
+Тіло скіла не обмежене plain text. Псевдокод добре передає алгоритмічну логіку — порядок кроків, умови, залежності — там де текст був би розмитим.
 
-- **`@ManyToOne`** — EAGER за замовчуванням. Залишити як є або явно оголосити LAZY.
-- **`@OneToMany`** — LAZY за замовчуванням. Залишити LAZY, підвантажувати через JOIN FETCH за потреби.
-- **`@ManyToMany`** — LAZY за замовчуванням. Завжди LAZY.
+```text
+if task involves DB migration:
+    run flyway-guard first
+    if guard fails → STOP, report to user
+    else → proceed with changes
+```
 
-Загальне правило: всі колекції — LAZY. Підвантажуйте явно через JOIN FETCH або EntityGraph.
+Claude читає це як інструкцію до виконання, а не як код для запуску. Можна комбінувати: псевдокод для логіки, текст для пояснення контексту. Це працює і в `CLAUDE.md`, і в скілах, і в системних промптах субагентів.
 
 ## Що включати в скіл
 
