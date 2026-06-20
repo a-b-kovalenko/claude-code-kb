@@ -65,7 +65,7 @@ project-root/
 │   │   └── SKILL.md
 │   └── init-project/
 │       └── SKILL.md
-└── plugins/                         ← встановлені плагіни
+└── plugins/                         ← встановлені плагіни з маркетплейсу
 ```
 
 Якщо один і той самий ключ є в обох місцях — перемагає проєктний рівень. `allow`/`deny`-списки об'єднуються.
@@ -86,7 +86,8 @@ Enterprise policy  →  ~/.claude/  →  .claude/settings.json  →  .claude/set
 **Потрібен статичний allow/deny без логіки?** → `.claude/settings.json`  
 **Простий шаблон промпту (legacy)?** → `.claude/commands/*.md`  
 **Треба делегувати підзадачу?** → `.claude/agents/`  
-**Потрібен прямий доступ до інфраструктури (БД, API)?** → `.mcp.json`
+**Потрібен прямий доступ до інфраструктури (БД, API)?** → `.mcp.json`  
+**Треба поділитися skills/agents з командою або між проєктами?** → плагін у `~/.claude/skills/<name>/` з маніфестом `.claude-plugin/plugin.json`
 
 ## Зв'язок з іншими нотатками
 
@@ -98,3 +99,4 @@ Enterprise policy  →  ~/.claude/  →  .claude/settings.json  →  .claude/set
 - Анатомія субагента: [👥 Архітектура субагентів](Subagents_Architecture.md).
 - Анатомія slash-команди: [⚡ Кастомні Slash-команди](Custom_Slash_Commands.md).
 - Реєстрація та розробка MCP-серверів: [🔌 Розробка MCP-сервера](MCP_Server_Development.md).
+- Плагіни — шеринг та маркетплейси: [📦 Плагіни](Plugins.md).

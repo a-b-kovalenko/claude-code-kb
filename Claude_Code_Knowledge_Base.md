@@ -64,6 +64,7 @@
 - [📄 Написання CLAUDE.md](content/CLAUDE_md_Writing_Guide.md) — Структура, шаблон та правила ефективного контракту з агентом.
 - [🛠️ Скіли, плагіни та MCP](content/Skills_and_MCP.md) — Надання агенту експертних знань та доступу до БД; реєстрація серверів через `.mcp.json`.
 - [✍️ Розробка власного скіла](content/Skill_Development_Guide.md) — Анатомія скіл-файлу, приклад JPA-скіла та правила написання ефективної експертизи.
+- [📦 Плагіни](content/Plugins.md) — Упаковка skills+agents+hooks у директорій для шерингу: standalone vs плагін, маніфест, маркетплейси.
 - [🔌 Розробка власного MCP-сервера](content/MCP_Server_Development.md) — TypeScript SDK, реєстрація через `.mcp.json` (скоупи project/local/user), практичні інструменти для Spring Boot.
 - [🌐 Code RAG та Knowledge Graph](content/Code_RAG_Knowledge_Graph.md) — Робота з великими монорепозиторіями через семантичний та графовий пошук.
 
