@@ -21,9 +21,11 @@ project-root/
     │   ├── kafka.md
     │   └── security.md
     │
-    ├── skills/                      ← глибока експертиза (за запитом)
-    │   ├── jpa-patterns.md
-    │   └── spring-security.md
+    ├── skills/                      ← скіли: auto-load + /команда
+    │   ├── jpa-patterns/
+    │   │   └── SKILL.md
+    │   └── spring-security/
+    │       └── SKILL.md
     │
     ├── agents/                      ← субагенти
     │   ├── explorer.md
@@ -34,7 +36,7 @@ project-root/
     │   ├── bash-guard.sh
     │   └── flyway-guard.sh
     │
-    └── commands/                    ← slash-команди (/команда)
+    └── commands/                    ← старий формат slash-команд (досі працює)
         └── review.md
 ```
 
@@ -45,10 +47,10 @@ project-root/
 | `CLAUDE.md` | На початку кожної сесії, завжди | Стек, структура, ключові правила та заборони |
 | `.mcp.json` | При старті сесії | Спільні MCP-сервери для команди (project scope) |
 | `.claude/rules/*.md` | На початку сесії, завжди | Модульні правила для конкретних тем (JPA, Kafka) |
-| `.claude/skills/*.md` | Тільки при релевантній задачі | Глибока технічна експертиза (патерни, антипатерни) |
+| `.claude/skills/<name>/SKILL.md` | Автоматично за темою або через `/name` | Глибока технічна експертиза; новий уніфікований формат |
 | `.claude/agents/*.md` | При делегуванні задачі субагенту | Роль, system prompt, модель та whitelist інструментів |
 | `.claude/hooks/*.sh` | При відповідній події (PreToolUse тощо) | Детерміновані перевірки та автоматизація |
-| `.claude/commands/*.md` | При явному виклику `/назва` | Шаблони для повторюваних задач |
+| `.claude/commands/*.md` | При явному виклику `/назва` | Старий flat-file формат slash-команд; досі працює |
 | `.claude/settings.json` | При старті сесії | Дозволи інструментів, змінні середовища, модель |
 | `.claude/settings.local.json` | При старті сесії | Локальні перевизначення (секрети, особисті налаштування) |
 
@@ -56,10 +58,14 @@ project-root/
 
 ```text
 ~/.claude/                           ← персональний (усі проєкти)
-├── settings.json
-├── rules/
-├── skills/
-└── agents/
+├── CLAUDE.md                        ← глобальні правила для всіх проєктів
+├── settings.json                    ← глобальні дозволи та налаштування
+├── skills/                          ← персональні скіли та slash-команди
+│   ├── handoff/
+│   │   └── SKILL.md
+│   └── init-project/
+│       └── SKILL.md
+└── plugins/                         ← встановлені плагіни
 ```
 
 Якщо один і той самий ключ є в обох місцях — перемагає проєктний рівень. `allow`/`deny`-списки об'єднуються.
@@ -75,10 +81,10 @@ Enterprise policy  →  ~/.claude/  →  .claude/settings.json  →  .claude/set
 ## Куди що класти: вирішальні питання
 
 **Правило потрібне щоразу?** → `CLAUDE.md` або `.claude/rules/`  
-**Правило потрібне тільки для конкретної теми?** → `.claude/skills/`  
+**Правило потрібне тільки для конкретної теми або треба slash-команда?** → `.claude/skills/<name>/SKILL.md`  
 **Потрібна умовна логіка або зупинка дії?** → `.claude/hooks/`  
 **Потрібен статичний allow/deny без логіки?** → `.claude/settings.json`  
-**Задача повторюється і викликається вручну?** → `.claude/commands/`  
+**Простий шаблон промпту (legacy)?** → `.claude/commands/*.md`  
 **Треба делегувати підзадачу?** → `.claude/agents/`  
 **Потрібен прямий доступ до інфраструктури (БД, API)?** → `.mcp.json`
 

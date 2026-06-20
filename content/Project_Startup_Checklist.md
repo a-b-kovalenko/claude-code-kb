@@ -25,15 +25,15 @@
 - Опис проєкту та tech stack
 - Мова спілкування з агентом
 - Структура директорій проєкту
-- Workflow планування: плани в `.plans/` (gitignored)
+- Workflow планування: плани в `.workspace/` (gitignored)
 - Заборонені дії (не коммітити в `main`, не видаляти міграції тощо)
 
 Детальніше: [Написання CLAUDE.md](CLAUDE_md_Writing_Guide.md)
 
 ### ☐ 3. Claude Code налаштування
 
-- `.claude/settings.json`: `plansDirectory: ".plans"`, `allowedTools`
-- `.plans/` у `.gitignore`
+- `.claude/settings.json`: `plansDirectory: ".workspace"`, `allowedTools`
+- `.workspace/` у `.gitignore`
 - MCP-сервери в `.mcp.json` якщо стек потребує: БД, GitHub, браузер тощо
 - Template Repository: якщо старти повторюються — тримати GitHub-шаблон з базовим `.gitignore`, `CLAUDE.md`, `.claude/settings.json` та структурою `docs/adr/`
 - Хуки за потреби: md-lint, flyway-guard
@@ -72,7 +72,7 @@ Git та remote вже є — пропускаємо кроки 1 і 6. Споч
 
 - `CLAUDE.md` — створити якщо немає, доповнити якщо є
 - `.claude/settings.json` — `plansDirectory`, `allowedTools`, хуки
-- `.plans/` у `.gitignore`
+- `.workspace/` у `.gitignore`
 - Pre-push хук у `.git/hooks/pre-push` (для командних проєктів)
 - `docs/adr/` — ADR-0001 документує рішення прийняти цей підхід
 - MCP якщо потрібно

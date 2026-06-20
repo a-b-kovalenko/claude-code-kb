@@ -115,13 +115,13 @@
 
 ```json
 {
-  "plansDirectory": ".plans"
+  "plansDirectory": ".workspace"
 }
 ```
 
-За замовчуванням `/plan` зберігає файли планів у `~/.claude/plans/` (глобальна директорія harness, поза проєктом). Щоб плани лежали поруч з кодом — задайте `plansDirectory` відносно кореня проєкту. Зручно для vault або монорепо з конвенцією `.plans/` у `.gitignore`.
+За замовчуванням `/plan` зберігає файли планів у `~/.claude/plans/` (глобальна директорія harness, поза проєктом). Щоб плани лежали поруч з кодом — задайте `plansDirectory` відносно кореня проєкту. Зручно для vault або монорепо з конвенцією `.workspace/` у `.gitignore`.
 
-> Для цього vault налаштовано `"plansDirectory": ".plans"` у `.claude/settings.json`.
+> Для цього vault налаштовано `"plansDirectory": ".workspace"` у `.claude/settings.json`.
 
 ## allow vs deny vs хук: що обрати
 

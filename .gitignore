@@ -9,7 +9,8 @@
 .claude/plans/
 
 # Internal files
-.plans/
+.workspace/
+handoff-*.md
 GEMINI.md
 
 # OS

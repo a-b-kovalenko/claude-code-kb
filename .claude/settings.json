@@ -1,5 +1,5 @@
 {
-  "plansDirectory": ".plans",
+  "plansDirectory": ".workspace",
   "permissions": {
     "allow": [
       "Bash(markdownlint *)"
