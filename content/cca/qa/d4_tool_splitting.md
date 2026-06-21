@@ -79,6 +79,7 @@ Internal routing layer вирішує проблему на рівні коду 
 
 ## Пов'язані нотатки
 
+- [Tool Use API](../../claude_api/tool_use_api.md) — як description впливає на вибір інструменту моделлю
 - [Tool description та SQL діалект](d4_tool_description_dialect.md) — якість опису визначає якість використання
 - [Structured output через tool schema](d4_structured_output_tool_schema.md) — input schema як контракт
 - [Domain 4: Tool Design & MCP](../domain_4_mcp_tools.md)

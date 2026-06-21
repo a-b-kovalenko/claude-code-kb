@@ -76,32 +76,18 @@ Batch-запуск без попередньої валідації промпт
 
 ## Технічна реалізація
 
-### Lifecycle батчу
+Повний lifecycle, структура запиту і ліміти — у [Batch Messages API](../../claude_api/batch_api.md).
 
-```text
-POST /v1/messages/batches                → отримуєш batch_id
-GET  /v1/messages/batches/{id}           → polling: processing_status = "in_progress" | "ended"
-GET  /v1/messages/batches/{id}/results   → JSONL-файл з результатами
-```
+Ключове для цього питання: кожен запит у батчі має `custom_id` — по ньому зіставляєш відповідь у JSONL-файлі результатів з вихідним документом.
 
-Кожен запит у батчі має `custom_id` (твій ідентифікатор) — по ньому зіставляєш відповідь з оригінальним запитом.
+**Batch API не підходить для:**
 
-### Ліміти
-
-| Параметр | Значення |
-| --- | --- |
-| Запитів на батч | До 10 000 або 32 MB (менше з двох) |
-| Термін зберігання результатів | 29 днів |
-| Скасування | Можливе до завершення обробки (`DELETE /v1/messages/batches/{id}`) |
-
-### Що не підходить для Batch API
-
-- Залежні запити (результат одного потрібен для наступного)
-- Streaming
-- Інтерактивні сценарії з вимогою до latency
+- Залежних запитів (результат одного потрібен для наступного)
+- Streaming і інтерактивних сценаріїв
 - Tool use з негайним виконанням інструментів
 
 ## Пов'язані нотатки
 
+- [Batch Messages API](../../claude_api/batch_api.md) — lifecycle, custom_id, ліміти, коли не підходить
 - [Domain 4: Tool Design & MCP](../domain_4_mcp_tools.md) — batch vs synchronous execution
 - [Domain 3: Prompt Engineering](../domain_3_prompts.md) — validation-retry loop

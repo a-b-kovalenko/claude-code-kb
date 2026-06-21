@@ -88,5 +88,6 @@ document received
 
 ## Пов'язані нотатки
 
+- [Batch Messages API](../../claude_api/batch_api.md) — lifecycle, pricing 50%, ліміти
+- [Стратегія batch processing](d4_batch_api_strategy.md) — sample-first перед повним batch
 - [Domain 4: Tool Design & MCP](../domain_4_mcp_tools.md) — вибір інструментів під вимоги
-- [Стратегія batch processing](d4_batch_api_strategy.md) — Batch API: коли і як

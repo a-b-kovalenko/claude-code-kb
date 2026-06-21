@@ -80,6 +80,7 @@
 
 ## Пов'язані нотатки
 
+- [Tool Use API](../../claude_api/tool_use_api.md) — визначення tools[], tool_choice для субагента
 - [Hub-and-spoke оркестрація](d1_hub_spoke_orchestration.md) — комунікація субагент ↔ координатор
 - [Архітектура субагентів](../../Subagents_Architecture.md) — розподіл ролей
 - [Domain 4: Tool Design & MCP](../domain_4_mcp_tools.md)

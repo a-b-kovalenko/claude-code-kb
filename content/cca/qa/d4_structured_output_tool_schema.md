@@ -127,5 +127,7 @@ Claude не "виводить JSON" — він викликає інструме
 
 ## Пов'язані нотатки
 
+- [Tool Use API](../../claude_api/tool_use_api.md) — повний agentic loop, tool_choice, parallel calls
+- [Nullable fields у schema](d4_nullable_fields_schema.md) — required vs nullable у input_schema
 - [Domain 4: Tool Design & MCP](../domain_4_mcp_tools.md) — проектування інструментів
 - [Hybrid routing: Batch vs real-time](d4_batch_vs_realtime_routing.md) — вибір транспорту для обробки документів

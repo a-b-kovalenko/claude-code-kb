@@ -57,6 +57,34 @@ Orchestrator
 
 **Правило:** якщо потрібна **гарантія** виконання — hook. Якщо потрібна **гнучкість** — prompt.
 
+## Self-Review Limitation
+
+Модель що переглядає власний вивід **у тій самій сесії** зберігає ланцюг свого попереднього міркування. Це систематична упередженість — модель підтверджує, а не оскаржує свої рішення.
+
+```text
+ПОГАНО — self-review в тій самій сесії:
+  instance → output → same instance reviews → confirms original reasoning
+
+ДОБРЕ — незалежний інстанс:
+  instance A → output → instance B (без prior context) → fresh evaluation
+```
+
+Незалежний інстанс підходить до виводу без контексту "чому я так вирішив" — суттєво вищий рівень виявлення проблем.
+
+**Типова пастка на іспиті:** "run three passes on the full PR and vote by majority" — три проходи з тими самими системними пропусками в увазі матимуть однакові сліпі плями.
+
+## Production Architecture: 5-Step Review
+
+```text
+1. Generation instance    → створює вивід
+2. Per-unit review        → кожен файл/документ окремим інстансом
+3. Integration instance   → cross-unit: data flow, суперечності, API contracts
+4. Confidence routing     → findings → direct_report | human_review
+5. Calibration loop       → коригує пороги за результатами labeled validation
+```
+
+Більше контекстне вікно не вирішує проблему якості уваги. Модель, що аналізує 14 файлів у великому вікні, все одно розпорошує увагу — задача залишається надто широкою для одного проходу.
+
 ## Production Failure Patterns
 
 ### 1. Subagent context not passed explicitly

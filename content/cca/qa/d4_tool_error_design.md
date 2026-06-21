@@ -103,5 +103,6 @@ Tool response — це не лише "результат або помилка".
 
 ## Пов'язані нотатки
 
+- [Tool Use API](../../claude_api/tool_use_api.md) — tool_result і is_error у agentic loop
 - [Domain 4: Tool Design & MCP](../domain_4_mcp_tools.md) — проектування інструментів
 - [Детерміновані guardrails](d1_deterministic_guardrails.md) — code-level enforcement vs модельна дискреція

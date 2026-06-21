@@ -13,6 +13,7 @@
 *Що таке Claude API і для чого воно потрібне.*
 
 - [🌐 Огляд Claude API](claude_api_overview.md) — що це, для чого, API vs Claude Code CLI, базова структура запиту, аутентифікація.
+- [☕ Java SDK](java_sdk.md) — встановлення, builder pattern, sync/async, streaming, tool use через анотації, pagination, error handling.
 
 ### ⚙️ Tool Use
 

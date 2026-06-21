@@ -82,6 +82,7 @@ Cache TTL — 5 хвилин. 500 документів/год = ~8 на хвил
 
 ## Пов'язані нотатки
 
+- [Prompt Caching API](../../claude_api/prompt_caching_api.md) — cache_control синтаксис, TTL, pricing, де ставити breakpoints
 - [Prompt cache: статичне першим](d3_prompt_cache_static_first.md) — чому порядок контенту важливий
 - [Domain 3: Prompt Engineering](../domain_3_prompts.md) — оптимізація промптів
 - [Вибір моделі та оптимізація вартості](../../Model_Selection_and_Cost.md) — стратегії економії
