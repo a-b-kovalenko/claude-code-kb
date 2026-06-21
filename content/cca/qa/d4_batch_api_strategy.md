@@ -4,6 +4,20 @@
 
 При витязі структурованих даних з 50 000 юридичних контрактів Batch API дає 50% знижку, але лише якщо промпти відпрацьовані заздалегідь. Оптимальна стратегія: валідуй на ~1 000 зразках через real-time API, виправ промпти — і лише тоді запускай повний batch. Два тижні дедлайну дозволяють кілька таких циклів.
 
+## Original
+
+**Scenario:** Your team is extracting structured data from 50,000 legacy legal contracts under a two-week deadline.
+
+**Question:** Which batch processing strategy is the most cost-efficient while still meeting the deadline?
+
+**A)** Submit all 50,000 documents via batch API, then submit failed extractions in successive batches refining prompts between each batch until all documents pass validation.
+
+**B)** Use the real-time API for all 50,000 documents since the batch API's 24-hour processing window creates unacceptable deadline risk.
+
+**C)** Process 1,000 sample documents via real-time API to identify failure patterns and refine prompts, then batch process all 50,000 with the optimized prompts.
+
+**D)** Split documents into sequential batches, comparing results and refining prompts between batches to improve extraction quality progressively.
+
 ## Питання
 
 Твоя команда витягує структуровані дані з 50 000 legacy-юридичних контрактів. Дедлайн — два тижні. Batch API: 50% знижка, вікно обробки до 24 годин. Яка стратегія найбільш cost-efficient при дотриманні дедлайну?

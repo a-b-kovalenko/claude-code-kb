@@ -4,6 +4,20 @@
 
 Критерій вибору між Batch API і real-time — не схема даних, а latency-вимоги. Однакова JSON-схема не означає однаковий pipeline: термінові документи з SLA 30 хвилин йдуть через real-time API, решта — через Batch API зі знижкою 50%.
 
+## Original
+
+**Scenario:** Your extraction system processes two document types: standard monthly reports (archived after processing) and urgent exception reports (must trigger business alerts within 30 minutes of receipt). Both use the same JSON schema.
+
+**Question:** How should you architect the processing pipeline?
+
+**A)** Queue all documents and submit hourly batches, flagging urgent documents for expedited handling when batch results return.
+
+**B)** Submit all documents to the Batch API with custom_ids for tracking.
+
+**C)** Route standard reports to the Batch API for 50% cost savings, and route urgent exception reports to the real-time Messages API.
+
+**D)** Submit all documents to the real-time Messages API to ensure consistent processing latency across document types.
+
 ## Питання
 
 Система обробляє два типи документів з однаковою JSON-схемою:

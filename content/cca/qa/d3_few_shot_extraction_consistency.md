@@ -4,6 +4,20 @@
 
 Непослідовна екстракція конкретного поля — сигнал що модель не має чіткого розуміння формату, а не що їй бракує потужності. Few-shot приклади з повними парами input-output встановлюють неявні правила екстракції, які узагальнюються на різні стилі опису товарів.
 
+## Original
+
+**Scenario:** Your extraction system parses e-commerce product descriptions to extract specifications like dimensions, weight, and materials into JSON. The model inconsistently extracts the "materials" field.
+
+**Question:** What's the most effective way to improve extraction consistency?
+
+**A)** Parse Claude's text response with regex patterns to extract JSON objects, using retry logic for malformed responses.
+
+**B)** Define a tool with an input schema matching your required JSON structure and extract the data from Claude's tool use response.
+
+**C)** Set temperature to 0 to eliminate randomness and ensure deterministic outputs.
+
+**D)** Add few-shot examples showing 2-3 complete input-output pairs with standardized material description formats.
+
 ## Питання
 
 Система парсить описи e-commerce продуктів і витягує специфікації (dimensions, weight, materials) у JSON. Поле `materials` витягується непослідовно.

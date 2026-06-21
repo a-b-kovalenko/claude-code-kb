@@ -4,6 +4,20 @@
 
 Оптимальне управління контекстом застосовує різний підхід до різних типів інформації: критичні структуровані дані — зберігаються точно у виділеному блоці, загальний діалог — резюмується, останній обмін — залишається verbatim. Один підхід для всього контексту завжди або втрачає деталі, або не зменшує токени.
 
+## Original
+
+**Scenario:** After a 40-minute session helping plan a dinner party, the conversation has grown to 78,000 tokens. The history includes crucial specific details (allergies, measurements) alongside general conversational back-and-forth. You need to implement context management before the window limit is reached.
+
+**Question:** What approach best balances information preservation with token reduction?
+
+**A)** Summarize the entire conversation history into a concise summary capturing main topics discussed, then append new messages going forward.
+
+**B)** Store the full conversation externally and use semantic search to retrieve portions most relevant to each turn, loading only matching segments into context.
+
+**C)** Extract critical structured data (allergies, serving sizes) and compile them into a condensed reference section; summarize general discussion; and retain recent exchanges verbatim.
+
+**D)** Implement a sliding window retaining only the most recent tokens, relying on citations to re-state important information when relevant.
+
 ## Питання
 
 Після 40-хвилинної сесії планування вечері розмова виросла до 78 000 токенів. Контекст містить критичні специфічні деталі (алергії, виміри) поряд із загальним conversational back-and-forth. Потрібно реалізувати управління контекстом до досягнення ліміту.

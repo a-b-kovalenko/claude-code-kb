@@ -4,6 +4,20 @@
 
 Оновлення системного промпту в середині активних multi-session розмов спричиняє протиріччя і зміну стилю. Правильне рішення — версіонування промптів: кожна розмова залишається на версії, з якої стартувала. Оновлення застосовується лише до нових розмов.
 
+## Original
+
+**Scenario:** After deploying an updated system prompt that improves response quality, users with multi-session conversations spanning several weeks report that the assistant now contradicts its earlier statements and has a noticeably different communication style.
+
+**Question:** What's the best approach to resolve this?
+
+**A)** Add a transition message when sessions resume explaining that the assistant has been updated and behavior may differ.
+
+**B)** Version system prompts and associate each conversation with the prompt version under which it started, applying updates only to new conversations.
+
+**C)** Add instructions to the new system prompt directing the assistant to maintain consistency with any prior statements in the conversation history.
+
+**D)** Regenerate summaries of existing conversations using the new prompt and replace the stored histories to align past context with current behavior.
+
 ## Питання
 
 Після розгортання оновленого системного промпту, що покращив якість відповідей, користувачі з multi-session розмовами протягом кількох тижнів повідомляють: асистент суперечить своїм попереднім твердженням і має помітно інший стиль спілкування.

@@ -4,6 +4,20 @@
 
 Compliance-вимоги, які "не можна залишати на розсуд моделі", вимагають детермінованого коду — не промптів. Хук, що перехоплює tool calls до виконання, є єдиним рішенням із гарантованим результатом: правило спрацьовує завжди, незалежно від того, як модель інтерпретує контекст.
 
+## Original
+
+**Scenario:** Compliance requires that refunds exceeding $500 must automatically escalate to a human agent — this rule cannot be left to model discretion.
+
+**Question:** How should you achieve guaranteed compliance?
+
+**A)** Strengthen the system prompt with emphatic language: "CRITICAL POLICY: Refunds over $500 MUST trigger human escalation. NEVER process these directly."
+
+**B)** Add few-shot examples to the prompt showing correct escalation behavior at various refund amounts ($400, $500, $600).
+
+**C)** Implement a hook to intercept tool calls; when the refund process amount exceeds $500, block it and invoke human escalation.
+
+**D)** Modify the refund tool to return an error with message "Amount exceeds policy limit — please escalate" when threshold is exceeded.
+
 ## Питання
 
 Compliance вимагає: повернення понад $500 **обов'язково** ескалюються до людини-агента. Це правило не може залишатися на розсуд моделі.

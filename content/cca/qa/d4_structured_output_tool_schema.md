@@ -4,6 +4,20 @@
 
 Найнадійніший спосіб отримати структурований вивід від Claude — визначити tool з input schema. Claude змушений продукувати аргументи що точно відповідають схемі на рівні API, а не "намагатися" вивести JSON за інструкцією в промпті.
 
+## Original
+
+**Scenario:** The system needs to extract candidate information (name, contact details, skills, work experience, education) from uploaded resumes.
+
+**Question:** What is the most reliable approach to ensure Claude's output consistently matches the schema?
+
+**A)** Parse Claude's text response with regex patterns to extract JSON objects, using retry logic for malformed responses.
+
+**B)** Define a tool with an input schema matching your required JSON structure and extract the data from Claude's tool use response.
+
+**C)** Make two separate API calls — first extracting information as text, then asking Claude to format that text as JSON.
+
+**D)** Include detailed JSON formatting instructions and a template example in the system prompt, asking Claude to output only valid JSON.
+
 ## Питання
 
 Система витягує дані кандидатів із завантажених резюме: ім'я, контактні дані, навички, досвід роботи, освіта.

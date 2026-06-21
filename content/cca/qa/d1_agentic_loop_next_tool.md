@@ -4,6 +4,20 @@
 
 Agentic loop не має вбудованої маршрутизації: результат кожного інструменту додається до контексту розмови, і модель сама вирішує наступний крок. Немає ні фіксованої послідовності, ні decision tree — лише динамічне міркування на основі накопиченого контексту.
 
+## Original
+
+**Scenario:** The agent is operating within a customer support agentic loop.
+
+**Question:** When the agent calls lookup_order and receives order details showing the item was purchased 45 days ago, how does the agentic loop determine whether to call process_refund or escalate_to_human next?
+
+**A)** The orchestration layer automatically routes to the next tool based on the order's status field.
+
+**B)** The agent executes the remaining steps in a tool sequence planned at the start of the request.
+
+**C)** The agent follows a pre-configured decision tree mapping order attributes to specific tool calls.
+
+**D)** The order details are added to the conversation and the model reasons about which action to take.
+
 ## Питання
 
 Агент працює в agentic loop підтримки клієнтів. Він викликає `lookup_order` і отримує деталі замовлення: товар куплено 45 днів тому. Як agentic loop вирішує — викликати `process_refund` чи `escalate_to_human` далі?

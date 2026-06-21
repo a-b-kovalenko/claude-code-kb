@@ -4,6 +4,20 @@
 
 MCP розрізняє два рівні помилок: JSON-RPC protocol errors — для некоректних викликів на рівні протоколу (malformed request, відсутні параметри), і tool results з `isError: true` — для помилок під час виконання (API повернув 404, 503). Критерій: чи міг інструмент взагалі почати виконуватись?
 
+## Original
+
+**Scenario:** Your MCP server implements a check_availability tool that queries an external calendar API. During testing, you encounter three error conditions: 1) the tool is called with a malformed request missing the required user email parameter, 2) the calendar API returns a 404 because the specified user doesn't exist in the calendar system, and 3) the calendar API returns a 503 because the service is temporarily unavailable.
+
+**Question:** How should each error be reported according to MCP's error handling design?
+
+**A)** Report error 1 as a JSON-RPC protocol error; report errors 2 and 3 as tool results with isError: true.
+
+**B)** Report all three as tool results with isError: true.
+
+**C)** Report errors 1 and 2 as JSON-RPC protocol errors; report error 3 as a tool result with isError: true.
+
+**D)** Report all three as JSON-RPC protocol errors.
+
 ## Питання
 
 MCP-сервер реалізує інструмент `check_availability`, що запитує зовнішній Calendar API. Під час тестування — три умови помилок:

@@ -4,6 +4,20 @@
 
 Інструмент має розрізняти transient і permanent помилки структурно — через поле `retriable`, а не через текст повідомлення. Structured error відповідь з `retriable: false` усуває марні retries, а customer-friendly пояснення дає агенту готову мову для відповіді користувачу.
 
+## Original
+
+**Scenario:** Your process_refund tool returns two types of errors: technical errors ("503 Service Unavailable", "Connection timeout") that are transient (5% of calls), and business errors ("Order exceeds 30-day return window", "Item already refunded") that are permanent (12% of calls). Monitoring shows the agent wastes 3–4 turns retrying business errors that can never succeed.
+
+**Question:** What's the most effective way to reduce wasted retries while improving customer-facing response quality?
+
+**A)** Implement automatic retry logic at the tool level for technical errors only, passing business errors to Claude without retries.
+
+**B)** Return structured error responses with retriable: false for business errors and a customer-friendly explanation for Claude to use.
+
+**C)** Add a check_refund_eligibility tool that must be called before process_refund to prevent business rule violations.
+
+**D)** Add few-shot examples showing how to distinguish retriable from non-retriable errors by parsing error message text.
+
 ## Питання
 
 Інструмент `process_refund` повертає два типи помилок:
