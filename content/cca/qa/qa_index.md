@@ -56,6 +56,20 @@
 | [Наступний крок в agentic loop](d1_agentic_loop_next_tool.md) | Як модель вирішує який інструмент викликати далі |
 | [Детерміновані guardrails](d1_deterministic_guardrails.md) | Compliance-правила через хуки, а не промпти |
 | [Multi-pass code review](d1_multi_pass_review.md) | Focused passes замість single-pass по 14 файлах |
+| [Prerequisite gate](d1_prerequisite_gate.md) | Programmatic блокування process_refund до верифікації |
+| [Hub-and-spoke оркестрація](d1_hub_spoke_orchestration.md) | Вся комунікація через координатор, субагенти ніколи напряму |
+| [Session management](d1_session_management.md) | Нова сесія + summary injection замість забрудненого контексту |
+| [PreToolUse hook: людське затвердження](d1_pretooluse_human_approval.md) | Незворотні дії — hook до виконання, не після |
+| [PostToolUse hook: нормалізація дат](d1_posttooluse_normalization.md) | Нормалізація різних форматів від backend до ISO 8601 |
+
+### Domain 2 · Claude Code Workflows (20%)
+
+| Нотатка | Тема |
+| --- | --- |
+| [allowedTools для обмеження файлів](d2_allowed_tools_restriction.md) | Whitelist інструментів і glob-паттерни vs CLAUDE.md правила |
+| [--output-format у CI/CD](d2_output_format_flag.md) | JSON stdout для програмного парсингу пайплайном |
+| [Ієрархія CLAUDE.md](d2_claude_md_hierarchy.md) | User-level vs project-level: командні конвенції — тільки в репо |
+| [Skill context:fork](d2_skill_context_fork.md) | .claude/skills/ + context:fork = shared + ізольований вивід |
 
 ### Domain 3 · Prompt Engineering (20%)
 
@@ -63,13 +77,8 @@
 | --- | --- |
 | [Стратегія batch processing](d4_batch_api_strategy.md) | Batch API vs real-time: cost-efficiency при дедлайні |
 | [Few-shot для послідовної екстракції](d3_few_shot_extraction_consistency.md) | Непослідовне поле — few-shot, не зміна моделі |
-
-### Domain 5 · Context & Memory (15%)
-
-| Нотатка | Тема |
-| --- | --- |
-| [Гібридне управління контекстом](d5_context_management_hybrid.md) | Різні стратегії для різних типів інформації при скороченні токенів |
-| [Prompt versioning для multi-session](d5_prompt_versioning_sessions.md) | Оновлення промпту не ламає активні розмови — тільки нові |
+| [Prompt cache: статичне першим](d3_prompt_cache_static_first.md) | Static before dynamic + cache_control breakpoint |
+| [Конкретні приклади vs прозові описи](d3_concrete_examples_severity.md) | Приклади коду для калібрації severity — не prose definitions |
 
 ### Domain 4 · Tool Design & MCP (18%)
 
@@ -80,3 +89,17 @@
 | [Structured output через tool schema](d4_structured_output_tool_schema.md) | Tool use як надійний механізм екстракції структурованих даних |
 | [Дизайн помилок інструментів](d4_tool_error_design.md) | Structured errors з `retriable` усувають марні retries агента |
 | [MCP error handling](d4_mcp_error_handling.md) | Protocol errors vs tool result `isError: true` — два рівні помилок |
+| [Tool description: SQL діалект](d4_tool_description_dialect.md) | Розширений опис з діалектом і прикладами — агент генерує правильний SQL |
+| [.mcp.json конфігурація команди](d4_mcp_json_config.md) | Project root .mcp.json в git + env var для credentials |
+| [Scoped tool для субагента](d4_scoped_tool_subagent.md) | verify_fact у субагента усуває 85% round trips до координатора |
+| [Розбиття інструменту на цільові](d4_tool_splitting.md) | analyze_content → extract_web/parse_doc/analyze_code |
+
+### Domain 5 · Context & Memory (15%)
+
+| Нотатка | Тема |
+| --- | --- |
+| [Гібридне управління контекстом](d5_context_management_hybrid.md) | Різні стратегії для різних типів інформації при скороченні токенів |
+| [Prompt versioning для multi-session](d5_prompt_versioning_sessions.md) | Оновлення промпту не ламає активні розмови — тільки нові |
+| [Context degradation та /compact](d5_context_degradation.md) | Термін, scratchpad+субагенти для профілактики, /compact для лікування |
+| [Provenance metadata](d5_provenance_metadata.md) | Джерело + часовий період + timestamp — обов'язкова тріада |
+| [Калібрація confidence per field type](d5_confidence_calibration.md) | Єдиний поріг не враховує різну кореляцію confidence і accuracy |
