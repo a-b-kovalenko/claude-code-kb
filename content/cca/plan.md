@@ -16,23 +16,23 @@
 
 ## Часова шкала
 
-```text
-Тижні 1–2  │ Anthropic Academy: API + MCP курси (≈10 год)
-            │ Мета: закрити теоретичні gaps по Domain 3, 4, 5
+**Тижні 1–2** — Anthropic Academy: API + MCP курси (≈10 год)
+Мета: закрити теоретичні gaps по Domain 3, 4, 5
 
-Тижні 3–4  │ Hands-on проєкти:
-            │ - Multi-agent orchestration (Domain 1)
-            │ - MCP server з custom tools + validation retry (Domain 4)
-            │ Фіксувати помилки → нотатки у цьому розділі vault
+**Тижні 3–4** — Hands-on проєкти:
 
-Тижні 5–6  │ Agent Skills курс + Cookbook (agentic розділи)
-            │ Фокус: production failure patterns для всіх 5 доменів
+- Multi-agent orchestration (Domain 1)
+- MCP server з custom tools + validation retry (Domain 4)
 
-Тиждень 7  │ Практичні тести (certificationpractice.com)
-            │ Повторення слабких зон за результатами
+Фіксувати помилки → нотатки у цьому розділі vault
 
-Тиждень 8  │ Фінальний review → реєстрація → іспит
-```
+**Тижні 5–6** — Agent Skills курс + [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook) (agentic розділи)
+Фокус: production failure patterns для всіх 5 доменів
+
+**Тиждень 7** — [Практичні тести](https://certificationpractice.com/practice-exams/anthropic-claude-certified-architect-foundations)
+Повторення слабких зон за результатами
+
+**Тиждень 8** — Фінальний review → реєстрація → іспит
 
 ## Офіційні ресурси (безкоштовно)
 
