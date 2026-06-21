@@ -104,18 +104,6 @@
 *Claude Certified Architect – Foundations: теорія, failure patterns і питання для самоперевірки.*
 
 - [🎓 CCA-F: Огляд та навігація](content/cca/CCA_Foundations.md) — Параметри іспиту, таблиця доменів, посилання на всі нотатки розділу.
-- [📅 План підготовки](content/cca/plan.md) — 8-тижнева програма з оцінкою стартового рівня та чеклістом готовності.
-- [🤖 Domain 1: Agentic Architecture (27%)](content/cca/domain_1_agentic.md) — Hub-and-spoke, session resumption, hooks vs. prompts, failure patterns.
-- [⚙️ Domain 2: Claude Code Workflows (20%)](content/cca/domain_2_claude_code.md) — CLAUDE.md ієрархія, glob rules, plan mode, CI/CD флаги.
-- [✍️ Domain 3: Prompt Engineering (20%)](content/cca/domain_3_prompts.md) — XML-теги, JSON schema design, validation-retry loop, few-shot.
-- [🔌 Domain 4: Tool Design & MCP (18%)](content/cca/domain_4_mcp_tools.md) — Tool descriptions, MCP primitives, batch vs. sync, конфігурація.
-- [🪟 Domain 5: Context & Reliability (15%)](content/cca/domain_5_context.md) — Progressive summarisation, escalation triggers, provenance tracking.
-- [❓ Q&A: Domain 1](content/cca/qa_domain_1.md) — 5 сценарних питань з поясненнями по агентській архітектурі.
-- [❓ Q&A: Domain 2](content/cca/qa_domain_2.md) — 5 сценарних питань з поясненнями по Claude Code workflows.
-- [❓ Q&A: Domain 3](content/cca/qa_domain_3.md) — 5 сценарних питань з поясненнями по prompt engineering.
-- [❓ Q&A: Domain 4](content/cca/qa_domain_4.md) — 5 сценарних питань з поясненнями по tool design і MCP.
-- [❓ Q&A: Domain 5](content/cca/qa_domain_5.md) — 5 сценарних питань з поясненнями по context і reliability.
-- [🔍 Розбір реальних питань](content/cca/qa/qa_index.md) — Глибокий аналіз питань з іспиту: кожна нотатка — одне питання з розбором варіантів і посиланнями.
 
 ---
 
