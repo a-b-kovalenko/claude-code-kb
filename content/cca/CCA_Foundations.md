@@ -32,3 +32,4 @@
 - [Anthropic Cookbook](https://github.com/anthropics/anthropic-cookbook)
 - [Практичні тести](https://certificationpractice.com/practice-exams/anthropic-claude-certified-architect-foundations)
 - [Claude Certification Guide](https://claudecertificationguide.com/) — навчальні модулі по доменах, Mock Exam, Drill Mode, Diagnostic Test
+- [Claude API](../claude_api/Claude_API.md) — теорія API для доменів 3 і 4 (tool use, caching, batch)

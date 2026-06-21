@@ -96,3 +96,8 @@ Model Context Protocol надає три типи примітивів:
 API ключі у `.mcp.json` (який потрапляє в репо).
 
 **Виправлення:** секрети — тільки у local-scope або через env variables з `.env` (gitignored).
+
+## Пов'язані нотатки Claude API
+
+- [Tool Use API](../claude_api/tool_use_api.md) — tools[], tool_use block, tool_result, agentic loop, tool_choice
+- [Batch Messages API](../claude_api/batch_api.md) — lifecycle, custom_id, JSONL результати, 50% знижка

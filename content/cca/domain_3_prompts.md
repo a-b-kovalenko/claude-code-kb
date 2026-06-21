@@ -119,3 +119,7 @@ Few-shot приклади допомагають коли:
 Тільки позитивні приклади — модель не знає що є неприйнятним.
 
 **Виправлення:** додати хоча б один приклад з edge case або граничним значенням.
+
+## Пов'язані нотатки Claude API
+
+- [Prompt Caching API](../claude_api/prompt_caching_api.md) — cache\_control breakpoint, TTL, pricing, приклад pipeline

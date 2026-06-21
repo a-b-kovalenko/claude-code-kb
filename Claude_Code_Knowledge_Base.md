@@ -99,6 +99,12 @@
 - [🔍 Аудит існуючого проєкту](content/Project_Audit_Guide.md) — Реконструкція контексту з git-історії та кодової бази: CLAUDE.md, ретроспективні ADR, MCP.
 - [🚀 Bootstrap-команда /init-project](content/Project_Bootstrap_Command.md) — Slash-команда з плейсхолдерами: запускаєш у новій папці — отримуєш готовий проєкт.
 
+### 🌐 Claude API
+
+*Механіки API для CCA-F: tool use, prompt caching, batch processing.*
+
+- [🌐 Claude API — Огляд та навігація](content/claude_api/Claude_API.md) — tool use, prompt caching, Batch API для доменів 3 і 4 іспиту CCA-F.
+
 ### 🎓 Підготовка до сертифікації CCA-F
 
 *Claude Certified Architect – Foundations: теорія, failure patterns і питання для самоперевірки.*
