@@ -55,6 +55,7 @@
 | --- | --- |
 | [Наступний крок в agentic loop](d1_agentic_loop_next_tool.md) | Як модель вирішує який інструмент викликати далі |
 | [Детерміновані guardrails](d1_deterministic_guardrails.md) | Compliance-правила через хуки, а не промпти |
+| [Multi-pass code review](d1_multi_pass_review.md) | Focused passes замість single-pass по 14 файлах |
 
 ### Domain 3 · Prompt Engineering (20%)
 
