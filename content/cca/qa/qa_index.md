@@ -77,7 +77,8 @@
 | --- | --- |
 | [Стратегія batch processing](d4_batch_api_strategy.md) | Batch API vs real-time: cost-efficiency при дедлайні |
 | [Few-shot для послідовної екстракції](d3_few_shot_extraction_consistency.md) | Непослідовне поле — few-shot, не зміна моделі |
-| [Prompt cache: статичне першим](d3_prompt_cache_static_first.md) | Static before dynamic + cache_control breakpoint |
+| [Prompt cache: статичне першим](d3_prompt_cache_static_first.md) | Static before dynamic — незмінний контент на початку |
+| [Prompt cache: cache\_control breakpoint](d3_prompt_cache_breakpoint.md) | 12k статичний system prompt + breakpoint = економія для 500 запитів/год |
 | [Конкретні приклади vs прозові описи](d3_concrete_examples_severity.md) | Приклади коду для калібрації severity — не prose definitions |
 
 ### Domain 4 · Tool Design & MCP (18%)
@@ -90,9 +91,11 @@
 | [Дизайн помилок інструментів](d4_tool_error_design.md) | Structured errors з `retriable` усувають марні retries агента |
 | [MCP error handling](d4_mcp_error_handling.md) | Protocol errors vs tool result `isError: true` — два рівні помилок |
 | [Tool description: SQL діалект](d4_tool_description_dialect.md) | Розширений опис з діалектом і прикладами — агент генерує правильний SQL |
-| [.mcp.json конфігурація команди](d4_mcp_json_config.md) | Project root .mcp.json в git + env var для credentials |
+| [.mcp.json: розміщення конфігурації команди](d4_mcp_json_config.md) | Project root .mcp.json в git — версіоноване і автоматично доступне |
+| [.mcp.json: credentials через env var](d4_mcp_credentials_env_var.md) | `${TOKEN}` expansion — config в git, токен локально |
 | [Scoped tool для субагента](d4_scoped_tool_subagent.md) | verify_fact у субагента усуває 85% round trips до координатора |
 | [Розбиття інструменту на цільові](d4_tool_splitting.md) | analyze_content → extract_web/parse_doc/analyze_code |
+| [Nullable fields у schema](d4_nullable_fields_schema.md) | Required поля тиснуть на fabrication — nullable дозволяє null |
 
 ### Domain 5 · Context & Memory (15%)
 
@@ -100,6 +103,7 @@
 | --- | --- |
 | [Гібридне управління контекстом](d5_context_management_hybrid.md) | Різні стратегії для різних типів інформації при скороченні токенів |
 | [Prompt versioning для multi-session](d5_prompt_versioning_sessions.md) | Оновлення промпту не ламає активні розмови — тільки нові |
-| [Context degradation та /compact](d5_context_degradation.md) | Термін, scratchpad+субагенти для профілактики, /compact для лікування |
+| [Context degradation: термін і мітигація](d5_context_degradation.md) | Термін + scratchpad та субагенти як профілактика |
+| [Context degradation: /compact як втручання](d5_context_compact_intervention.md) | /compact з focus інструкціями для деградованої сесії |
 | [Provenance metadata](d5_provenance_metadata.md) | Джерело + часовий період + timestamp — обов'язкова тріада |
 | [Калібрація confidence per field type](d5_confidence_calibration.md) | Єдиний поріг не враховує різну кореляцію confidence і accuracy |

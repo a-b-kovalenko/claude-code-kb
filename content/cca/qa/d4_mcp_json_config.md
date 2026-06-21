@@ -2,23 +2,11 @@
 
 ## 📝 TL;DR
 
-`.mcp.json` у корені проєкту — єдине правильне місце для командної конфігурації MCP серверів: версіонується через git, клонується автоматично. Персональні credentials — через змінні середовища (`${TOKEN}`), не хардкодом. Особисті сервери — у `~/.claude.json`.
+`.mcp.json` у корені проєкту — єдине правильне місце для командної конфігурації MCP серверів: версіонується через git і автоматично доступний після `git clone`. Особисті сервери — у `~/.claude.json`.
 
 ## Original
 
-**Scenario A (Q3):** A platform engineering team wants to share an MCP server for their internal ticketing system across all developers using Claude Code. The server requires an API token unique to each developer. Where should the MCP server be configured, and how should credentials be managed?
-
-**A)** Have each developer add the server to their personal `~/.claude.json` with their API token
-
-**B)** Create a shared `.env` file in the repository with all developer tokens and reference it from `.mcp.json`
-
-**C)** Add the server to `.mcp.json` in the project root with each developer's API token hard-coded in the configuration
-
-**D)** Add the server to `.mcp.json` in the project root using `${TICKETING_API_TOKEN}` environment variable expansion, so each developer sets their own token locally
-
----
-
-**Scenario B (Q23):** Where should a team-wide MCP server configuration be placed so that it is version-controlled and shared across all developers on the project?
+**Question:** Where should a team-wide MCP server configuration be placed so that it is version-controlled and shared across all developers on the project?
 
 **A)** In environment variables set on each developer's machine
 
@@ -30,31 +18,47 @@
 
 ## Питання
 
-**Сценарій A:** Команда платформних інженерів хоче поділитися MCP сервером для внутрішньої ticketing системи між усіма розробниками. Сервер вимагає унікального API токену для кожного. Де налаштувати сервер і як керувати credentials?
+Де розмістити командну конфігурацію MCP сервера щоб вона версіонувалась і шерувалась між усіма розробниками проєкту?
 
-**D)** Додати сервер до `.mcp.json` у корені проєкту з `${TICKETING_API_TOKEN}` — кожен розробник встановлює свій токен локально ✓
+**A)** У змінних середовища на машині кожного розробника
 
----
+**B)** У файлі `.mcp.json` проєкту, закомічений у репозиторій
 
-**Сценарій B:** Де розмістити командну конфігурацію MCP сервера щоб вона версіонувалась і шерувалась між розробниками?
+**C)** У `~/.claude.json` у домашньому каталозі кожного розробника
 
-**B)** У файлі `.mcp.json` проєкту, закомічений у репозиторій ✓
+**D)** У system prompt, як inline JSON блок що визначає підключення до сервера
 
-## Правильна відповідь: D (Q3), B (Q23)
+## Правильна відповідь: B
 
 ## Аналіз варіантів
 
-### Q3 — правильна відповідь D
+### B — Правильний
 
-`.mcp.json` у корені проєкту версіонується і шерується (Q23 теж підтверджує). Env var expansion `${TICKETING_API_TOKEN}` дозволяє кожному розробнику зберігати свій токен локально (`.env` або змінні ОС) без його присутності у git. Особистий `~/.claude.json` (A) не шерується. Shared `.env` з усіма токенами (B) — security risk і не масштабується. Hard-coded токени (C) — security risk, ламається у кожного іншого розробника.
+`.mcp.json` — офіційний файл конфігурації MCP для Claude Code. Зберігається в репо → автоматично доступний після `git clone`. Уся команда отримує однакову конфігурацію без ручного налаштування.
 
-### Q23 — правильна відповідь B
+### A — Хибний
 
-`.mcp.json` — офіційний файл конфігурації MCP для Claude Code. Зберігається в репо → автоматично доступний після `git clone`. Змінні середовища на машині (A) не версіонуються і не описують конфігурацію сервера. `~/.claude.json` (C) — особистий, не шерується. System prompt (D) — не місце для конфігурації серверів.
+Змінні середовища на машині зберігають credentials, але не описують конфігурацію сервера. Не версіонуються, не шеруються.
+
+### C — Хибний
+
+`~/.claude.json` — глобальний особистий файл. Не пов'язаний з репозиторієм, не версіонується, у кожного розробника свій.
+
+### D — Хибний
+
+System prompt — для інструкцій моделі, не для конфігурації інфраструктури. MCP сервер — окрема служба, не частина промпту.
 
 ## Ключові концепції
 
-### .mcp.json з env var expansion
+### Де зберігати MCP конфігурацію
+
+| Файл | Scope | Версіонується? | Шерується? |
+| --- | --- | --- | --- |
+| `.mcp.json` (project root) | Проєктний | Так (git) | Так |
+| `~/.claude.json` | Глобальний | Ні | Ні |
+| `.mcp.json` (local scope) | Проєктний | Ні (gitignore) | Ні |
+
+### Структура .mcp.json
 
 ```json
 {
@@ -70,24 +74,11 @@
 }
 ```
 
-Файл у git — конфігурація сервера. Токен — у локальному `.env` або `export TICKETING_API_TOKEN=...` в shell. Розробник B клонує репо → налаштовує свою змінну → MCP сервер доступний.
-
-### Де зберігати MCP конфігурацію
-
-| Файл | Scope | Шерується? |
-| --- | --- | --- |
-| `.mcp.json` (project root) | Проєктний | Так (git) |
-| `~/.claude.json` | Глобальний | Ні |
-| `.mcp.json` (local scope) | Проєктний, ігнорується git | Ні |
-
-### Принцип розділення
-
-Конфігурація сервера (endpoint, команда, параметри) → `.mcp.json` у git.
-Credentials (токени, ключі) → змінні середовища локально.
-Ніколи не комітити credentials у репо.
+Конфігурація сервера (команда, аргументи) — у git. Credentials — через env var (детальніше: [.mcp.json: credentials через env var](d4_mcp_credentials_env_var.md)).
 
 ## Пов'язані нотатки
 
+- [.mcp.json: credentials через env var](d4_mcp_credentials_env_var.md) — `${TOKEN}` expansion для персональних токенів
 - [Скіли, плагіни та MCP](../../Skills_and_MCP.md) — реєстрація через `.mcp.json`
 - [Розробка власного MCP-сервера](../../MCP_Server_Development.md) — TypeScript SDK, scopes
 - [Domain 4: Tool Design & MCP](../domain_4_mcp_tools.md)
