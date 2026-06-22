@@ -46,6 +46,30 @@ Orchestrator
 
 **Типова помилка:** зберігати тільки фінальний результат — при падінні все починається з нуля.
 
+`fork_session` vs `--resume` — два різних механізми:
+
+| | `fork_session` | `--resume` |
+| --- | --- | --- |
+| Що робить | Створює незалежну гілку від поточної точки | Продовжує конкретну named session |
+| Коли | Паралельне дослідження різних підходів | Відновлення після падіння або паузи |
+| Результат | Дві незалежні сесії далі | Одна сесія продовжується |
+
+## Enforcement Spectrum
+
+| Підхід | Механізм | Успішність |
+| --- | --- | --- |
+| Prompt-based guidance | LLM інтерпретує інструкцію | ~90-95% |
+| Programmatic enforcement | Код виконується детерміновано | 100% |
+
+Вибір рівня enforcement залежить від типу операції:
+
+| Тип операції | Enforcement |
+| --- | --- |
+| Фінансові (refund, transfer, payment) | Programmatic — завжди |
+| Безпека (identity verification, access control) | Programmatic — завжди |
+| Compliance (AML, регуляторні вимоги) | Programmatic — завжди |
+| Low-stakes (форматування, порядок виводу) | Prompt — допустимо |
+
 ## Hooks vs. Prompts
 
 | | Hooks | Prompts |
@@ -56,6 +80,32 @@ Orchestrator
 | Де конфігурується | `settings.json` | `CLAUDE.md`, system prompt |
 
 **Правило:** якщо потрібна **гарантія** виконання — hook. Якщо потрібна **гнучкість** — prompt.
+
+## Structured Human Handoff
+
+При ескалації до людини-агента summary повинен бути **self-contained** — людина не має доступу до транскрипту. Обов'язкові поля:
+
+1. Customer ID
+2. Conversation summary
+3. Root cause analysis
+4. Refund amount (якщо застосовно)
+5. Recommended action
+
+Пастка іспиту: неповний handoff без root cause або recommended action — дистрактор що "виглядає як ескалація" але не дає людині достатньо контексту.
+
+## Multi-Concern Requests
+
+Якщо запит містить кілька незалежних питань — **не обробляти послідовно**:
+
+```text
+ПОГАНО: issue 1 → resolve → issue 2 → resolve → issue 3 → resolve → synthesize
+
+ДОБРЕ:  decompose → [issue 1, issue 2, issue 3] паралельно зі спільним контекстом
+                                    ↓
+                            synthesize unified resolution
+```
+
+Паралельна обробка зі спільним контекстом — швидше і дає узгоджену відповідь замість трьох незалежних.
 
 ## Self-Review Limitation
 

@@ -91,6 +91,7 @@ anthropic-version: 2023-06-01
 
 ## Пов'язані нотатки
 
+- [🔢 Токени та токенізація](../Tokens_and_Tokenization.md) — базова одиниця API: що таке токен, BPE, англійська vs українська
 - [Основи агентської розробки](../Agentry_Basics.md) — концептуальне порівняння API vs Claude Code CLI з точки зору вибору інструменту
 - [Tool Use API](tool_use_api.md) — як додати інструменти до запиту
 - [Prompt Caching API](prompt_caching_api.md) — зниження вартості повторних запитів

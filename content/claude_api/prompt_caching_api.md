@@ -95,6 +95,7 @@ response = client.messages.create(
 
 ## Пов'язані нотатки
 
+- [🔢 Токени та токенізація](../Tokens_and_Tokenization.md) — що рахується і як оцінити обсяг до кешування
 - [Prompt cache: статичне першим](../cca/qa/d3_prompt_cache_static_first.md) — чому порядок контенту важливий
 - [Prompt cache: cache\_control breakpoint](../cca/qa/d3_prompt_cache_breakpoint.md) — приклад з 500 запитами/год
 - [Claude API — Огляд](Claude_API.md)

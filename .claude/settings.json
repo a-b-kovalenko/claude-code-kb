@@ -2,7 +2,8 @@
   "plansDirectory": ".workspace",
   "permissions": {
     "allow": [
-      "Bash(markdownlint *)"
+      "Bash(markdownlint *)",
+      "Bash(cd * && markdownlint *)"
     ]
   },
   "hooks": {

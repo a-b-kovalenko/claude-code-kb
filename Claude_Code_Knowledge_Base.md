@@ -61,6 +61,7 @@
 - [🧠 Ієрархія пам'яті та синтез](content/Memory_Hierarchy_and_Synthesis.md) — CLAUDE.md та патерн компіляції знань Карпаті.
 - [💾 Auto-memory система](content/Auto_Memory_System.md) — Файлова структура, чотири типи пам'яті, формат файлів та що не варто зберігати.
 - [🪟 Контекстне вікно та /compact](content/Context_Window_Management.md) — Lost in the Middle, ручне стиснення, PreCompact хук та стратегії керування.
+- [🔢 Токени та токенізація](content/Tokens_and_Tokenization.md) — що таке токен, BPE, порівняння англійської та української, практичні наслідки для вартості та контексту.
 - [💰 Вибір моделі та оптимізація вартості](content/Model_Selection_and_Cost.md) — Haiku/Sonnet/Opus по задачах, налаштування, стратегії економії, підписка vs API.
 - [📄 Написання CLAUDE.md](content/CLAUDE_md_Writing_Guide.md) — Структура, шаблон та правила ефективного контракту з агентом.
 - [🛠️ Скіли, плагіни та MCP](content/Skills_and_MCP.md) — Надання агенту експертних знань та доступу до БД; реєстрація серверів через `.mcp.json`.

@@ -98,3 +98,4 @@ model: claude-haiku-4-5-20251001
 - Коли вмикати Extended Thinking: [🧠 Extended Thinking та /think](Extended_Thinking.md).
 - Поле `model` в `settings.json`: [⚙️ Конфігурація settings.json](Settings_JSON_Guide.md).
 - `/compact` як інструмент економії токенів: [🪟 Контекстне вікно та /compact](Context_Window_Management.md).
+- Як оцінити кількість токенів для англійського та українського тексту: [🔢 Токени та токенізація](Tokens_and_Tokenization.md).
