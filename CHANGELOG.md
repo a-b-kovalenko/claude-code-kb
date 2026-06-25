@@ -29,5 +29,7 @@
 - **[Claude_Code_Knowledge_Base.md](Claude_Code_Knowledge_Base.md)** — нова секція `🔌 Розширення та інтеграції`; MCP, CI/CD, Playwright, Remote Control, Desktop App перенесено туди; прибрано дублікат Headless Mode
 - **[Скіли, плагіни та MCP](content/Skills_and_MCP.md)** — таблиця скоупів: `local` переміщено першим як дефолтний
 - **[Розробка власного MCP-сервера](content/MCP_Server_Development.md)** — таблиця скоупів оновлена; додано секцію "Org-level MCP"; Python FastMCP приклад (виправлено connection leak, додано LIMIT 100); Spring AI MCP приклад для Java (`@McpTool`, Spring AI 2.0); tool annotations; MCP Inspector; CWD caveat для org-level; data truncation у Безпека; TypeScript приклад видалено, залишено згадку
+- **[MCP vs Tool Use](content/MCP_vs_Tool_Use.md)** — виправлено назву інструменту у флоу (`query` без префіксу); Claude Code показано як посередник; уточнено TL;DR (Resources/Prompts); security boundary; "розширення Claude Code — тільки MCP"; Java-аналогія → Feign/HttpURLConnection
+- **[MCP — огляд та визначення](content/MCP_Overview.md)** — session lifecycle caveat (рестарт при зміні сервера); крок 7 узагальнено ("Зовнішнє API"); stdio security note
 - **[Довідник команд](content/Commands_Reference.md)** — додано `/rewind`
 - **[Agent View](content/Agents_View.md)** — зупинка агента через tasks panel тепер постійна
