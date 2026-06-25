@@ -22,6 +22,7 @@
 
 - [🤖 Основи агентської розробки](content/Agentry_Basics.md) — Що таке агентність та різниця між API та CLI.
 - [🖥️ IDE інтеграції](content/IDE_Integrations.md) — VS Code та JetBrains: inline diff, діагностика, getDiagnostics MCP, коли CLI краще.
+- [⌨️ REPL-шорткати](content/REPL_Shortcuts.md) — Префікси `#`, `@`, `!` та клавіші Escape, Double Escape, Shift+Tab, Ctrl+V: режими і комбінації для швидкої роботи в терміналі.
 - [🧠 Extended Thinking та /think](content/Extended_Thinking.md) — Глибше міркування для складних рішень: коли вмикати і як не переплачувати.
 - [📅 Планування та Tasks API](content/Planning_and_Tasks.md) — Як не дати агенту "заблукати" у складних задачах.
 - [👥 Архітектура субагентів](content/Subagents_Architecture.md) — Розподіл ролей: Explorer, Runner, Reviewer.
@@ -49,6 +50,7 @@
 - [⚡ Паралельні субагенти](content/Parallel_Subagents.md) — Одночасний запуск кількох Task-викликів: коли виграє час, коли створює конфлікти.
 - [🌿 Worktree Isolation](content/Worktree_Isolation.md) — Ізольований запуск субагента у відгалуженій копії репо: lifecycle, злиття результату, коли варто.
 - [🔀 Динамічна оркестрація субагентів](content/Dynamic_Orchestration.md) — Оркестратор вирішує наступний крок за результатом: розгалуження, retry loop, адаптивний паралелізм.
+- [🛠️ Claude Code SDK](content/Claude_Code_SDK.md) — Програмний інтерфейс (CLI/TS/Python): read-only за замовчуванням, allowTools для запису, сирий діалог як вивід.
 - [⚙️ Claude Code Dynamic Workflows](content/Claude_Code_Dynamic_Workflows.md) — Офіційна фіча (research preview): Claude генерує JS-скрипт і запускає сотні субагентів поза сесією.
 - [🔁 Loop Engineering](content/Loop_Engineering.md) — 14-крокова рамка переходу від ручного промптингу до автономних циклів: 4-умовний тест, 5 блоків, failure modes.
 - [🖥️ Agent View](content/Agents_View.md) — `claude agents`: dashboard фонових сесій, стани, peek, диспатч, ізоляція через worktrees.
@@ -90,6 +92,7 @@
 - [🛑 Stop Hook](content/Stop_Hook.md) — Хук на завершення відповіді: сповіщення, нагадування, примусове продовження через exit 2.
 - [🖥️ Headless Mode](content/Headless_Mode.md) — Запуск без REPL: `--print`, ключові прапори, одна задача — один процес, захист від нескінченних циклів.
 - [⚙️ CI/CD інтеграція](content/CI_CD_Integration.md) — GitHub Actions, автентифікація через API key, prompt injection, управління вартістю.
+- [🎭 Playwright MCP](content/Playwright_MCP.md) — Браузерна автоматизація для Claude: встановлення, дозволи, UI-верифікація у PR review, trade-offs для Java команди.
 - [📱 Remote Control](content/Remote_Control.md) — Продовження локальної сесії з телефону або браузера: QR-код, push-нотифікації, вимоги до плану.
 - [🖥️ Desktop App](content/Desktop_App.md) — Нативний додаток: паралельні сесії з worktree, diff-рев'ю, PR моніторинг, вбудований браузер, Dispatch з телефону.
 

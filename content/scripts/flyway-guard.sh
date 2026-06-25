@@ -17,6 +17,13 @@ tool="$(printf '%s' "$input" | jq -r '.tool_name // empty')"
 
 [ -z "$path" ] && exit 0
 
+case "$path" in
+  *..*)
+    echo "BLOCKED by flyway-guard: path traversal detected in '$path'" >&2
+    exit 2
+    ;;
+esac
+
 # Каталог міграцій — підправ під свою структуру.
 # Типово: src/main/resources/db/migration/V*__*.sql
 case "$path" in

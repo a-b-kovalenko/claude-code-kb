@@ -2,20 +2,21 @@
 
 ## 📝 TL;DR
 
-Claude Code запускається в CI через headless-режим (`--print`) — детально про нього в [Headless-режим](Headless_Mode.md). Для CI специфічно: автентифікація через `ANTHROPIC_API_KEY` (підписка не підходить), обмеження `--allowedTools` проти prompt injection, і `concurrency` у GitHub Actions проти rate limits.
+Два підходи до GitHub інтеграції: **офіційний GitHub App** (`claude-code-action@v1` + `@claude` mentions) і **ручний headless** (`claude --print`). Обидва потребують `ANTHROPIC_API_KEY` — підписка Pro/Max у CI не працює. Для enterprise — Bedrock або Vertex AI замість прямого API key.
 
 ## 🔐 Автентифікація в CI
 
-Підписка Max або Pro прив'язана до браузерної сесії — у CI вона не працює. Потрібен [API key](https://console.anthropic.com/):
+**Підписка Pro/Max у CI не працює** — вона прив'язана до браузерної сесії. Для CI потрібен один із трьох варіантів:
 
-```yaml
-env:
-  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-```
+| Варіант | Що потрібно | Коли |
+| :--- | :--- | :--- |
+| Anthropic API | `ANTHROPIC_API_KEY` → GitHub Secret | Стандартний вибір |
+| Amazon Bedrock | OIDC + IAM role (`AWS_ROLE_TO_ASSUME`) | Enterprise, AWS-інфраструктура |
+| Google Vertex AI | Workload Identity (`GCP_WORKLOAD_IDENTITY_PROVIDER` + `GCP_SERVICE_ACCOUNT`) | Enterprise, GCP-інфраструктура |
 
-Додати `ANTHROPIC_API_KEY` до **Settings → Secrets and variables → Actions** у репозиторії (GitHub) або до credentials у Jenkins.
+Додати `ANTHROPIC_API_KEY` до **Settings → Secrets and variables → Actions**. Для Bedrock і Vertex — OIDC без статичних ключів; вони також потребують власного кастомного GitHub App (офіційний Anthropic App для них не підходить).
 
-Див. [Вибір моделі та оптимізація вартості](Model_Selection_and_Cost.md) — там порівняння вартості моделей.
+Див. [Вибір моделі та оптимізація вартості](Model_Selection_and_Cost.md) — порівняння вартості моделей.
 
 ## 🔌 Провайдери та API
 
@@ -26,14 +27,89 @@ Claude Code використовує **Anthropic API format** — endpoint `/v1/
 | Бекенд | Аутентифікація |
 | :--- | :--- |
 | Anthropic API (за замовчуванням) | `ANTHROPIC_API_KEY` |
-| Amazon Bedrock | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` |
-| Google Vertex AI | `GOOGLE_APPLICATION_CREDENTIALS` або ADC |
+| Amazon Bedrock | OIDC + IAM role (`AWS_ROLE_TO_ASSUME`) — без статичних ключів |
+| Google Vertex AI | Workload Identity Federation (`GCP_WORKLOAD_IDENTITY_PROVIDER`) |
 
 Змінна `ANTHROPIC_BASE_URL` дозволяє перенаправити виклики на кастомний endpoint, але він також має відповідати **Anthropic API format**, а не OpenAI.
 
 Для OpenAI-сумісних провайдерів (GitHub Models, Ollama, Groq тощо) — використовуй `curl` або OpenAI SDK напряму, як показано в прикладах нижче.
 
-## 🐙 GitHub Actions: приклади
+## 🐙 Офіційна GitHub App інтеграція
+
+Найпростіший шлях — офіційний `claude-code-action@v1`. Не потребує ручного встановлення Claude Code, підтримує `@claude` mentions і автоматично визначає режим роботи.
+
+### Швидке налаштування
+
+```bash
+/install-github-app
+```
+
+Команда встановлює Anthropic GitHub App і проводить через додавання `ANTHROPIC_API_KEY` як секрету. **Тільки для прямого Anthropic API** — для Bedrock/Vertex потрібне ручне налаштування.
+
+Права, які запитує app: Contents, Issues, Pull requests — Read & Write.
+
+### @claude mentions у PR і issues
+
+```yaml
+name: Claude Code
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  claude:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+```
+
+Після налаштування достатньо написати в коментарі до PR:
+
+```text
+@claude implement this feature based on the issue description
+@claude review this for security issues
+@claude fix the failing test in OrderServiceTest
+```
+
+### Автоматичний PR review (без trigger)
+
+```yaml
+name: Code Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: "/code-review"
+```
+
+### Параметри claude-code-action@v1
+
+| Параметр | Опис |
+| :--- | :--- |
+| `anthropic_api_key` | API key (обов'язково для прямого API) |
+| `prompt` | Інструкція або назва скіла (`/code-review`) |
+| `claude_args` | CLI-аргументи: `--max-turns 5 --model claude-sonnet-4-6` |
+| `trigger_phrase` | Кастомний тригер (default: `@claude`) |
+| `use_bedrock` | `"true"` для Amazon Bedrock |
+| `use_vertex` | `"true"` для Google Vertex AI |
+
+## 🐙 GitHub Actions: ручні приклади (headless)
 
 ### Автоматичний PR review
 

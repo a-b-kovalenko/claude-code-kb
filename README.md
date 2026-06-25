@@ -1,18 +1,20 @@
 # Claude Code Knowledge Base
 
-База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 46 нотаток: від основ агентської розробки до production-ready workflow, захисних хуків та прикладів субагентів.
+База знань про [Claude Code](https://claude.ai/code) для Senior Java-розробника. 113 нотаток: від основ агентської розробки до production-ready workflow, захисних хуків, прикладів субагентів та підготовки до сертифікації CCA-F.
 
 ## Що всередині
 
 | Розділ | Зміст |
 | :----- | :----- |
-| 🤖 Методологія Agentry | Основи, IDE-інтеграції, Extended Thinking, планування, архітектура субагентів, headless-режим |
+| 🤖 Методологія Agentry | Основи, IDE-інтеграції, Extended Thinking, планування, архітектура субагентів, REPL-шорткати, headless-режим |
 | 💡 Кращі практики | Золотий workflow, антипатерни, ефективні промпти, чеклист перед задачею |
-| 🔬 Субагенти та оркестрація | Готові приклади Explorer / Test-runner / Reviewer, паралельність, worktree |
-| 🧠 Контекст та пам'ять | CLAUDE.md, auto-memory, управління контекстним вікном, вибір моделі |
+| 🔬 Субагенти та оркестрація | Готові приклади Explorer / Test-runner / Reviewer, паралельність, worktree, Claude Code SDK |
+| 🧠 Контекст та пам'ять | CLAUDE.md (три рівні), auto-memory, управління контекстним вікном, вибір моделі, MCP-сервери, Playwright MCP |
 | 🧪 Інженерна якість | Spring Boot тестування, Git/PR workflow, верифікаційний цикл |
-| 🛡️ Інфраструктура та безпека | Хуки, дозволи, settings.json, CI/CD інтеграція, Remote Control, Desktop App |
+| 🛡️ Інфраструктура та безпека | Хуки (security best practices), дозволи, settings.json, CI/CD + GitHub Actions, Remote Control, Desktop App |
 | 🏁 Старт проєкту | Чеклист старту, методологія ADR, bootstrap-команда `/init-project`, аудит існуючого проєкту |
+| 🌐 Claude API | Tool use, prompt caching, Batch API — механіки для доменів CCA-F |
+| 🎓 CCA-F | Підготовка до сертифікації: 5 доменів, 34 розбори питань іспиту |
 
 ## Як використовувати
 
@@ -32,8 +34,12 @@ npm install -g markdownlint-cli
 
 ```text
 ├── Claude_Code_Knowledge_Base.md   # MOC — центральний реєстр нотаток
-├── content/                        # Всі нотатки (44 файли .md)
-│   └── scripts/                    # Bash-скрипти (bash-guard, flyway-guard)
+├── content/                        # Основні нотатки (53 файли)
+│   ├── commands/                   # Нотатки окремих команд (8 файлів)
+│   ├── scripts/                    # Bash-скрипти (bash-guard, flyway-guard)
+│   ├── cca/                        # Підготовка до CCA-F (12 файлів)
+│   │   └── qa/                     # Розбори питань іспиту (34 файли)
+│   └── claude_api/                 # Claude API механіки (6 файлів)
 ├── CLAUDE.md                       # Інструкції для Claude Code агента
 ├── .obsidian/                      # Конфіг Obsidian (без workspace.json)
 └── .claude/

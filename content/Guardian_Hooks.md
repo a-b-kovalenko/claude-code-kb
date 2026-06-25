@@ -94,6 +94,13 @@ tool="$(printf '%s' "$input" | jq -r '.tool_name // empty')"
 [ -z "$path" ] && exit 0
 
 case "$path" in
+  *..*)
+    echo "BLOCKED by flyway-guard: path traversal detected in '$path'" >&2
+    exit 2
+    ;;
+esac
+
+case "$path" in
   *db/migration/V*__*.sql)
     if [ "$tool" = "Edit" ] || { [ "$tool" = "Write" ] && [ -f "$path" ]; }; then
       echo "BLOCKED by flyway-guard: '$path' is an existing migration. Applied migrations are immutable — create a NEW V<next>__*.sql instead." >&2
