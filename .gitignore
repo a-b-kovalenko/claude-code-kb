@@ -15,3 +15,10 @@ GEMINI.md
 
 # OS
 .DS_Store
+
+# Smart Connections local index
+.smart-env
+
+# Obsidian plugin configs (personal)
+.obsidian/plugins/
+.obsidian/community-plugins.json
