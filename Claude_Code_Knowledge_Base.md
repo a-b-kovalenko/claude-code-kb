@@ -69,7 +69,6 @@
 - [🛠️ Скіли, плагіни та MCP](content/Skills_and_MCP.md) — Надання агенту експертних знань та доступу до БД; реєстрація серверів через `.mcp.json`.
 - [✍️ Розробка власного скіла](content/Skill_Development_Guide.md) — Анатомія скіл-файлу, приклад JPA-скіла та правила написання ефективної експертизи.
 - [📦 Плагіни](content/Plugins.md) — Упаковка skills+agents+hooks у директорій для шерингу: standalone vs плагін, маніфест, маркетплейси.
-- [🔌 Розробка власного MCP-сервера](content/MCP_Server_Development.md) — TypeScript SDK, реєстрація через `.mcp.json` (скоупи project/local/user), практичні інструменти для Spring Boot.
 - [🌐 Code RAG та Knowledge Graph](content/Code_RAG_Knowledge_Graph.md) — Робота з великими монорепозиторіями через семантичний та графовий пошук.
 
 ### 🧪 Інженерна якість
@@ -79,6 +78,18 @@
 - [🔄 Верифікаційний цикл](content/Agentic_Verification_Loop.md) — Швидкий зворотний зв'язок як основа якості.
 - [🧪 Тестування Spring Boot](content/Spring_Boot_Testing.md) — Testcontainers, AssertJ та робота з Kafka.
 - [🌿 Git та PR Workflow](content/Git_PR_Workflow.md) — Чиста git-історія, коміт-конвенції та відкриття PR через агента.
+
+### 🔌 Розширення та інтеграції
+
+*MCP-протокол, зовнішні сервери, CI/CD та інші інтеграції Claude Code.*
+
+- [🔌 MCP — огляд та визначення](content/MCP_Overview.md) — Що таке MCP, три примітиви (Tool/Resource/Prompt), три учасники (Host/Client/Server), місце в Claude Code.
+- [⚖️ MCP vs Tool Use](content/MCP_vs_Tool_Use.md) — Принципова різниця: механізм виклику vs протокол; ListToolsRequest/CallToolRequest; sequence diagram.
+- [🔌 Розробка власного MCP-сервера](content/MCP_Server_Development.md) — TypeScript SDK, реєстрація через `.mcp.json` (скоупи project/local/user), практичні інструменти для Spring Boot.
+- [🎭 Playwright MCP](content/Playwright_MCP.md) — Браузерна автоматизація для Claude: встановлення, дозволи, UI-верифікація у PR review, trade-offs для Java команди.
+- [⚙️ CI/CD інтеграція](content/CI_CD_Integration.md) — GitHub Actions, автентифікація через API key, prompt injection, управління вартістю.
+- [📱 Remote Control](content/Remote_Control.md) — Продовження локальної сесії з телефону або браузера: QR-код, push-нотифікації, вимоги до плану.
+- [🖥️ Desktop App](content/Desktop_App.md) — Нативний додаток: паралельні сесії з worktree, diff-рев'ю, PR моніторинг, вбудований браузер, Dispatch з телефону.
 
 ### 🛡️ Інфраструктура та Безпека
 
@@ -90,11 +101,6 @@
 - [🔧 Розробка власного хука](content/Hook_Development_Guide.md) — Анатомія хука, stdin JSON, exit-коди, зворотний зв'язок та практичні приклади.
 - [📋 MD Lint Hook](content/MD_Lint_Hook.md) — PostToolUse-хук для автоматичної перевірки markdown: конфіг, скрипт та відома поведінка.
 - [🛑 Stop Hook](content/Stop_Hook.md) — Хук на завершення відповіді: сповіщення, нагадування, примусове продовження через exit 2.
-- [🖥️ Headless Mode](content/Headless_Mode.md) — Запуск без REPL: `--print`, ключові прапори, одна задача — один процес, захист від нескінченних циклів.
-- [⚙️ CI/CD інтеграція](content/CI_CD_Integration.md) — GitHub Actions, автентифікація через API key, prompt injection, управління вартістю.
-- [🎭 Playwright MCP](content/Playwright_MCP.md) — Браузерна автоматизація для Claude: встановлення, дозволи, UI-верифікація у PR review, trade-offs для Java команди.
-- [📱 Remote Control](content/Remote_Control.md) — Продовження локальної сесії з телефону або браузера: QR-код, push-нотифікації, вимоги до плану.
-- [🖥️ Desktop App](content/Desktop_App.md) — Нативний додаток: паралельні сесії з worktree, diff-рев'ю, PR моніторинг, вбудований браузер, Dispatch з телефону.
 
 ### 🏁 Старт проєкту
 
