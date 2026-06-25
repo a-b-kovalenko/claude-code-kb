@@ -3,6 +3,7 @@
 
 # Obsidian personal settings (workspace state only)
 .obsidian/workspace.json
+.obsidian/graph.json
 
 # Claude Code local/session files
 .claude/settings.local.json
