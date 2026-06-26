@@ -84,6 +84,7 @@
 *MCP-протокол, зовнішні сервери, CI/CD та інші інтеграції Claude Code.*
 
 - [🔌 MCP — огляд та визначення](content/MCP_Overview.md) — Що таке MCP, три примітиви (Tool/Resource/Prompt), три учасники (Host/Client/Server), місце в Claude Code.
+- [🧩 MCP примітиви: Tools / Resources / Prompts](content/MCP_Primitives.md) — Фреймворк "хто контролює": model-controlled / app-controlled / user-controlled; шпаргалка вибору.
 - [⚖️ MCP vs Tool Use](content/MCP_vs_Tool_Use.md) — Принципова різниця: механізм виклику vs протокол; ListToolsRequest/CallToolRequest; sequence diagram.
 - [🔌 Розробка власного MCP-сервера](content/MCP_Server_Development.md) — TypeScript SDK, реєстрація через `.mcp.json` (скоупи project/local/user), практичні інструменти для Spring Boot.
 - [🎭 Playwright MCP](content/Playwright_MCP.md) — Браузерна автоматизація для Claude: встановлення, дозволи, UI-верифікація у PR review, trade-offs для Java команди.

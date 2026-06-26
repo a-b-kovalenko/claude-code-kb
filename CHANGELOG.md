@@ -6,7 +6,13 @@
 
 ## 2026-06-26
 
+### Додано
+
+- **[MCP примітиви: Tools / Resources / Prompts](content/MCP_Primitives.md)** — фреймворк "хто контролює" (model / app / user-controlled), шпаргалка вибору примітиву
+
 ### Оновлено
+
+- **[MCP — огляд та визначення](content/MCP_Overview.md)** — таблиця примітивів замінена одним реченням з посиланням на MCP_Primitives.md
 
 **MCP-кластер (рефакторинг та розширення):**
 
