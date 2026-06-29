@@ -23,3 +23,4 @@ GEMINI.md
 # Obsidian plugin configs (personal)
 .obsidian/plugins/
 .obsidian/community-plugins.json
+/.agents/
